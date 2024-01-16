@@ -8,11 +8,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - 
   - Water
   - UI
   - 
-  - 
+  - Ground
   - 
   - 
   - 
@@ -38,12 +38,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
-  - name: Default
-    uniqueID: 0
-    locked: 0
   - name: Background
     uniqueID: 2748051005
     locked: 0
+  - name: clouds
+    uniqueID: 2981113195
+    locked: 0
+  - name: sea
+    uniqueID: 4219748241
+    locked: 0
   - name: Ground
     uniqueID: 2107732017
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: items
+    uniqueID: 1751013107
     locked: 0
