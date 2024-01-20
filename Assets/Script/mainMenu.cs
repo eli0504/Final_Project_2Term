@@ -14,7 +14,6 @@ public class mainMenu : MonoBehaviour
     [SerializeField] private Button exitButton;
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button creditsButton;
-
     [SerializeField] private Button backButton;
 
     private void Awake()

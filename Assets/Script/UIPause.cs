@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using System;
 
 public class UIPause : MonoBehaviour
 {
     public static UIPause Instance { get; private set; }
 
+    //VARIABLES
     [SerializeField] private GameObject pausePanel;
 
     [SerializeField] private Button settingsButton;
@@ -17,6 +19,7 @@ public class UIPause : MonoBehaviour
 
     private void Awake()
     {
+        //SINGLETON
         if (Instance != null)
         {
             Debug.LogError("More than one Instance");
