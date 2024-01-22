@@ -23,7 +23,8 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
+        //jump
+        //horizontalInput = Input.GetAxis("Horizontal");
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -33,6 +34,22 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rigidbody2D.velocity = new Vector2(moveSpeed * horizontalInput, rigidbody2D.velocity.y);
+        //left direction
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            rigidbody2D.velocity = new Vector2(-moveSpeed, rigidbody2D.velocity.y);
+        }
+        else
+        {     //right direction
+            if (Input.GetKeyDown(KeyCode.D))
+            {
+                rigidbody2D.velocity = new Vector2(moveSpeed, rigidbody2D.velocity.y);
+            }
+        }       
+    }
+
+    private bool IsGrounded()
+    {
+        Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.down, boxCollider2D.bounds.extents.y);
     }
 }
