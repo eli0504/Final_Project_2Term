@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rigidbody2D;
     private BoxCollider2D boxCollider2D;
-    [SerializeField] private LayerMask groundLayerMask;
+    [SerializeField] public LayerMask groundLayerMask;
 
 
     private float horizontalInput;
@@ -25,7 +25,7 @@ public class PlayerController : MonoBehaviour
         //jump
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
         {
             rigidbody2D.velocity = Vector2.up * jumpSpeed;
         }
@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         //left direction
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             rigidbody2D.velocity = new Vector2(-moveSpeed, rigidbody2D.velocity.y);
         }
@@ -62,6 +62,7 @@ public class PlayerController : MonoBehaviour
         }
 
         Debug.DrawRay(boxCollider2D.bounds.center, Vector2.down * (boxCollider2D.bounds.extents.y));
+        Debug.Log(raycastHit.collider);
         return raycastHit.collider != null;
     }
 }
