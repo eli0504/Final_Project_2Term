@@ -5,26 +5,25 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     private Rigidbody2D rigidbody2D;
+    private BoxCollider2D boxCollider2D;
+    [SerializeField] private LayerMask groundLayerMask;
+
 
     private float horizontalInput;
     private float moveSpeed = 10f;
     private float jumpSpeed = 8f;
 
-    private BoxCollider2D boxCollider2D;
-    [SerializeField] private LayerMask groundLayerMask;
-
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-
         boxCollider2D = GetComponentInChildren<BoxCollider2D>();
     }
 
     private void Update()
     {
         //jump
-        //horizontalInput = Input.GetAxis("Horizontal");
+        horizontalInput = Input.GetAxis("Horizontal");
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
@@ -35,7 +34,7 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         //left direction
-        if (Input.GetKeyDown(KeyCode.A))
+        if (IsGrounded() && Input.GetKeyDown(KeyCode.A))
         {
             rigidbody2D.velocity = new Vector2(-moveSpeed, rigidbody2D.velocity.y);
         }
@@ -50,6 +49,19 @@ public class PlayerController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.down, boxCollider2D.bounds.extents.y);
+        RaycastHit2D raycastHit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.down, boxCollider2D.bounds.extents.y, groundLayerMask);
+        //visualice raycast
+        Color rayColor;
+        if(raycastHit.collider != null)
+        {
+            rayColor = Color.green;
+        }
+        else
+        {
+            rayColor = Color.red;
+        }
+
+        Debug.DrawRay(boxCollider2D.bounds.center, Vector2.down * (boxCollider2D.bounds.extents.y));
+        return raycastHit.collider != null;
     }
 }
