@@ -4,35 +4,42 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public GameObject player;
     private Rigidbody2D rigidbody2D;
-    private BoxCollider2D boxCollider2D;
-    [SerializeField] public LayerMask groundLayerMask;
-
 
     private float horizontalInput;
     private float moveSpeed = 10f;
-    private float jumpSpeed = 8f;
+    private float jumpSpeed = 9f;
 
+    private BoxCollider2D boxCollider2D;
+    [SerializeField] private LayerMask groundLayerMask;
+
+    //INVENTORY
     private Inventory inventory;
-    [SerializeField] private UI_Inventory uiInventory;
-
+    [SerializeField] private UI_Inventory ui_Inventory;
+   
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
-        boxCollider2D = GetComponentInChildren<BoxCollider2D>();
 
+        boxCollider2D = GetComponentInChildren<BoxCollider2D>();
+    }
+
+    private void Start()
+    {
         //INVENTORY -> passing in the inventory object on to our UI script
         inventory = new Inventory();
-        uiInventory.SetInventory(inventory);
+        ui_Inventory.SetInventory(inventory);
     }
 
     private void Update()
     {
-        //jump
+        //JUMP
         horizontalInput = Input.GetAxis("Horizontal");
 
-        if (IsGrounded() && Input.GetKeyDown(KeyCode.Space))
+        bool isOnTheGround = IsOnTheGround();
+        if (Input.GetKeyDown(KeyCode.Space) && isOnTheGround)
         {
             rigidbody2D.velocity = Vector2.up * jumpSpeed;
         }
@@ -40,36 +47,44 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //left direction
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            rigidbody2D.velocity = new Vector2(-moveSpeed, rigidbody2D.velocity.y);
-        }
-        else
-        {     //right direction
-            if (Input.GetKeyDown(KeyCode.D))
-            {
-                rigidbody2D.velocity = new Vector2(moveSpeed, rigidbody2D.velocity.y);
-            }
-        }       
+        rigidbody2D.velocity = new Vector2(moveSpeed * horizontalInput, rigidbody2D.velocity.y);
     }
 
-    private bool IsGrounded()
+    private bool IsOnTheGround()
     {
-        RaycastHit2D raycastHit = Physics2D.Raycast(boxCollider2D.bounds.center, Vector2.down, boxCollider2D.bounds.extents.y, groundLayerMask);
-        //visualice raycast
-        Color rayColor;
-        if(raycastHit.collider != null)
+        /*Color raycatHitColor;
+        if (raycatHitColor.collider != null)
         {
-            rayColor = Color.green;
+            raycatHitColor = Color.green;
         }
         else
         {
-            rayColor = Color.red;
+            raycatHitColor = Color.red;
         }
+        */
 
-        Debug.DrawRay(boxCollider2D.bounds.center, Vector2.down * (boxCollider2D.bounds.extents.y));
-        Debug.Log(raycastHit.collider);
-        return raycastHit.collider != null;
+
+        float extraHeight = 0.05f;
+        RaycastHit2D raycastHit2D = Physics2D.Raycast(boxCollider2D.bounds.center,
+                                                      Vector2.down,
+                                                      boxCollider2D.bounds.extents.y + extraHeight,
+                                                      groundLayerMask);
+        bool isOnTheGround = raycastHit2D.collider != null;
+
+        //visualice raycast
+        Color raycatHitColor = isOnTheGround ? Color.green : Color.red;
+        Debug.DrawRay(boxCollider2D.bounds.center,
+                      Vector2.down * (boxCollider2D.bounds.extents.y + extraHeight),
+                      raycatHitColor);
+
+        return isOnTheGround;
+    }
+
+    private void PassLevel()
+    {
+        if(collision.gameObject.tag == "PassLevel")
+        {
+            SceneManager.LoadScene("Level2");
+        }
     }
 }

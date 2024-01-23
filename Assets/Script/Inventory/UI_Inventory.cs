@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class UI_Inventory : MonoBehaviour
 {
-    private Inventory inventory; //inventory reference
+    private Inventory inventory;
+
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
 
@@ -21,19 +22,19 @@ public class UI_Inventory : MonoBehaviour
         RefreshInventoryItems();
     }
 
-    //recorrer los items de la lista de objectos
+    //cycle through all the items in the inventory
     private void RefreshInventoryItems()
     {
         int x = 0;
         int y = 0;
         float itemSlotCellSize = 30f;
-
         foreach(Items item in inventory.GetItemsList())
         {
+            //instantiate our container
             RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
-            itemSlotRectTransform.gameObject.SetActive(true);//poner en visible las celdas
+            itemSlotRectTransform.gameObject.SetActive(true); //enable our container
 
-            //locate our item slots in a grid
+            //container pos
             itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
             x++;
             if(x > 4)
@@ -43,4 +44,5 @@ public class UI_Inventory : MonoBehaviour
             }
         }
     }
+
 }

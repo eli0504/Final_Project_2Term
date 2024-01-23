@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class enemies : MonoBehaviour
 {
-    private float speed = 4;
-    //private Rigidbody _rigidbody;
+    /*private float speed = 4;
+    private Rigidbody _rigidbody;
     public GameObject player;
 
     private void Awake()
@@ -24,4 +24,5 @@ public class enemies : MonoBehaviour
 
        // _rigidbody.AddForce(direction * speed); //se aplica una fuerza sobre el rigidbody del enemigo hacia el player a la misma velocidad
     }
+    */
 }

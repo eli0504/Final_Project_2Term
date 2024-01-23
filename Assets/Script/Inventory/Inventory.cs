@@ -9,7 +9,7 @@ public class Inventory
     public Inventory()
     {
         itemList = new List<Items>();
-
+       
         //display the items
         AddItem(new Items { itemType = Items.ItemType.Sword, amount = 1 });
         AddItem(new Items { itemType = Items.ItemType.HealthPotion, amount = 1 });

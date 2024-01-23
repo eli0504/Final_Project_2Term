@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - waterhole
+  - itemSlotContainer
+  - PassLevel
   layers:
   - Default
   - TransparentFX
@@ -44,6 +46,9 @@ TagManager:
     locked: 0
   - name: clouds
     uniqueID: 2981113195
+    locked: 0
+  - name: back2
+    uniqueID: 1971812331
     locked: 0
   - name: sea
     uniqueID: 4219748241
