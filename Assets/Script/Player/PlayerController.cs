@@ -13,11 +13,18 @@ public class PlayerController : MonoBehaviour
     private float moveSpeed = 10f;
     private float jumpSpeed = 8f;
 
+    private Inventory inventory;
+    [SerializeField] private UI_Inventory uiInventory;
+
     private void Awake()
     {
         rigidbody2D = GetComponent<Rigidbody2D>();
         rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         boxCollider2D = GetComponentInChildren<BoxCollider2D>();
+
+        //INVENTORY -> passing in the inventory object on to our UI script
+        inventory = new Inventory();
+        uiInventory.SetInventory(inventory);
     }
 
     private void Update()
