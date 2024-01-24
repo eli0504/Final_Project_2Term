@@ -7,6 +7,10 @@ public class PlayerController : MonoBehaviour
     public GameObject player;
     private Rigidbody2D rigidbody2D;
 
+    private Animator anim;
+
+    private SpriteRenderer sprite;
+
     private float horizontalInput;
     private float moveSpeed = 10f;
     private float jumpSpeed = 9f;
@@ -20,6 +24,10 @@ public class PlayerController : MonoBehaviour
    
     private void Awake()
     {
+        anim = GetComponent<Animator>();
+
+        sprite = GetComponent<SpriteRenderer>();
+
         rigidbody2D = GetComponent<Rigidbody2D>();
         rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
 
@@ -43,6 +51,8 @@ public class PlayerController : MonoBehaviour
         {
             rigidbody2D.velocity = Vector2.up * jumpSpeed;
         }
+
+        Animations();
     }
 
     private void FixedUpdate()
@@ -52,18 +62,6 @@ public class PlayerController : MonoBehaviour
 
     private bool IsOnTheGround()
     {
-        /*Color raycatHitColor;
-        if (raycatHitColor.collider != null)
-        {
-            raycatHitColor = Color.green;
-        }
-        else
-        {
-            raycatHitColor = Color.red;
-        }
-        */
-
-
         float extraHeight = 0.05f;
         RaycastHit2D raycastHit2D = Physics2D.Raycast(boxCollider2D.bounds.center,
                                                       Vector2.down,
@@ -88,4 +86,23 @@ public class PlayerController : MonoBehaviour
         }
     }
    */
+
+    private void Animations()
+    {
+        //ANIMATIONS
+        if (horizontalInput > 0f) //right direction
+        {
+            anim.SetBool("running", true);
+            sprite.flipX = false; //for flip to the right direction
+        }
+        else if (horizontalInput < 0f) //left direction
+        {
+            anim.SetBool("running", true);
+            sprite.flipX = true; 
+        }
+        else
+        {
+            anim.SetBool("running", false);
+        }
+    }
 }
