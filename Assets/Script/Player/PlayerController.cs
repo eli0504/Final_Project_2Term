@@ -80,11 +80,12 @@ public class PlayerController : MonoBehaviour
         return isOnTheGround;
     }
 
-    private void PassLevel()
+   /* private void PassLevel()
     {
         if(collision.gameObject.tag == "PassLevel")
         {
             SceneManager.LoadScene("Level2");
         }
     }
+   */
 }

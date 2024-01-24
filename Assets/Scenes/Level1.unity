@@ -12991,7 +12991,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1591119914
 Transform:
   m_ObjectHideFlags: 0
@@ -13259,10 +13259,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2e9cd75c46bcb6349a6008ea290a660d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 1681770317}
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
-  ui_Inventory: {fileID: 0}
+  ui_Inventory: {fileID: 2116195439}
 --- !u!114 &1681770326
 MonoBehaviour:
   m_ObjectHideFlags: 0

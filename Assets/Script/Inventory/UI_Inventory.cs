@@ -31,17 +31,25 @@ public class UI_Inventory : MonoBehaviour
         foreach(Items item in inventory.GetItemsList())
         {
             //instantiate our container
-            RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
-            itemSlotRectTransform.gameObject.SetActive(true); //enable our container
-
-            //container pos
-            itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
-            x++;
-            if(x > 4)
+            if(itemSlotTemplate != null)
             {
-                x = 0;
-                y++;
+                RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
+                itemSlotRectTransform.gameObject.SetActive(true); //enable our container
+                                                                  //container pos
+                itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
+                x++;
+                if (x > 4)
+                {
+                    x = 0;
+                    y++;
+                }
             }
+            else
+            {
+                Debug.Log("the item slot template is null");
+            }
+
+            
         }
     }
 
