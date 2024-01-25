@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -14,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float moveSpeed = 10f;
     private float jumpSpeed = 9f;
+
+    private int points;
 
     private BoxCollider2D boxCollider2D;
     [SerializeField] private LayerMask groundLayerMask;
@@ -89,14 +93,26 @@ public class PlayerController : MonoBehaviour
         return isOnTheGround;
     }
 
-    /* private void PassLevel()
-     {
-         if(collision.gameObject.tag == "PassLevel")
-         {
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.name.Contains("PassLevel"))
+        {
              SceneManager.LoadScene("Level2");
-         }
-     }
-    */
+            Debug.Log("You will pass to the next level!");
+        }
+        else
+        {
+            Debug.Log("no passlevel");
+        }
+
+        //coins
+        if (other.gameObject.name.Contains("coins"))
+        {
+            Destroy(other.gameObject); //the collectable dissapear 
+            points++;
+        }
+    }
+    
 
     //ANIMATIONS
     private void Animations()
