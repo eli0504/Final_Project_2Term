@@ -9,6 +9,7 @@ TagManager:
   - PassLevel
   - coins
   - secretRoom
+  - smallPowerUp
   layers:
   - Default
   - TransparentFX

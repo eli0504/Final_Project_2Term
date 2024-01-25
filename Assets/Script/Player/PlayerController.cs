@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     private float jumpSpeed = 9f;
 
     private int points;
+    private float smallPowerUp = 0.5f;
 
     private BoxCollider2D boxCollider2D;
     [SerializeField] private LayerMask groundLayerMask;
@@ -111,8 +112,15 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject); //the collectable dissapear 
             points++;
         }
+
+        //smallPowerUp
+        if (other.gameObject.tag == "smallPowerUp")
+        {
+            player.transform.localScale = new Vector3(smallPowerUp, smallPowerUp, smallPowerUp);
+        }
+           
     }
-    
+
 
     //ANIMATIONS
     private void Animations()
