@@ -9,6 +9,7 @@ public class UI_Inventory : MonoBehaviour
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
 
+
     private void Awake()
     {
         //REFERENCES
@@ -47,9 +48,7 @@ public class UI_Inventory : MonoBehaviour
             else
             {
                 Debug.Log("the item slot template is null");
-            }
-
-            
+            }     
         }
     }
 

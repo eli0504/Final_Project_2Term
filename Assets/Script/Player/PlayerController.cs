@@ -50,6 +50,17 @@ public class PlayerController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && isOnTheGround)
         {
             rigidbody2D.velocity = Vector2.up * jumpSpeed;
+            anim.SetBool("jump", true);
+        }
+        else
+        {
+            anim.SetBool("jump", false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && !isOnTheGround)
+        {
+            anim.SetBool("fall", true);
+            Debug.Log("NO POSSIBLE");
         }
 
         Animations();
@@ -78,18 +89,19 @@ public class PlayerController : MonoBehaviour
         return isOnTheGround;
     }
 
-   /* private void PassLevel()
-    {
-        if(collision.gameObject.tag == "PassLevel")
-        {
-            SceneManager.LoadScene("Level2");
-        }
-    }
-   */
+    /* private void PassLevel()
+     {
+         if(collision.gameObject.tag == "PassLevel")
+         {
+             SceneManager.LoadScene("Level2");
+         }
+     }
+    */
 
+    //ANIMATIONS
     private void Animations()
     {
-        //ANIMATIONS
+       //Run
         if (horizontalInput > 0f) //right direction
         {
             anim.SetBool("running", true);
@@ -103,6 +115,16 @@ public class PlayerController : MonoBehaviour
         else
         {
             anim.SetBool("running", false);
+        }
+
+        //Attack
+        if (Input.GetMouseButtonDown(0))
+        {
+            anim.SetBool("attack", true);
+        }
+        else
+        {
+            anim.SetBool("attack", false);
         }
     }
 }

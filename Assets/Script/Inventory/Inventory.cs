@@ -4,7 +4,21 @@ using UnityEngine;
 
 public class Inventory
 {
+    public static Inventory Instance { get; private set; }
+
     private List<Items> itemList;
+
+
+   private void  Awake()
+    {
+        // Singleton
+        if (Instance != null)
+        {
+            Debug.LogError("There is more than one Instance");
+        }
+
+        Instance = this;
+    }
 
     public Inventory()
     {
