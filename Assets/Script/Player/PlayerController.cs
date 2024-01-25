@@ -93,20 +93,20 @@ public class PlayerController : MonoBehaviour
         return isOnTheGround;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name.Contains("PassLevel"))
+        if (other.gameObject.tag == "PassLevel")
         {
-             SceneManager.LoadScene("Level2");
+            SceneManager.LoadScene("Level2");
             Debug.Log("You will pass to the next level!");
         }
-        else
+        else if(other.gameObject.tag == "secretRoom")
         {
-            Debug.Log("no passlevel");
+            SceneManager.LoadScene("SecretRoomLevel1");
         }
 
         //coins
-        if (other.gameObject.name.Contains("coins"))
+        if (other.gameObject.tag == "coins")
         {
             Destroy(other.gameObject); //the collectable dissapear 
             points++;

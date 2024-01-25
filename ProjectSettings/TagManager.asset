@@ -7,6 +7,8 @@ TagManager:
   - waterhole
   - itemSlotContainer
   - PassLevel
+  - coins
+  - secretRoom
   layers:
   - Default
   - TransparentFX
