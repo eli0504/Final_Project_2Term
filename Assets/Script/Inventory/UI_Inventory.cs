@@ -36,7 +36,8 @@ public class UI_Inventory : MonoBehaviour
             {
                 RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
                 itemSlotRectTransform.gameObject.SetActive(true); //enable our container
-                                                                  //container pos
+
+                 //container pos
                 itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
                 x++;
                 if (x > 4)
@@ -45,10 +46,11 @@ public class UI_Inventory : MonoBehaviour
                     y++;
                 }
             }
-            else
+           /* else
             {
                 Debug.Log("the item slot template is null");
-            }     
+            }   
+           */
         }
     }
 

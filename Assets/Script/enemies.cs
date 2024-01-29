@@ -1,28 +1,51 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.U2D;
 
 public class enemies : MonoBehaviour
 {
-    /*private float speed = 4;
-    private Rigidbody _rigidbody;
+    private float speed = 2f;
     public GameObject player;
 
-    private void Awake()
-    {
-       // _rigidbody = GetComponent<Rigidbody>();
-    }
+    private float distance;
 
-    private void Start()
-    {
-        player = GameObject.Find("Player");
-    }
+    private Animator anim;
 
     private void Update()
     {
-        Vector3 direction = (player.transform.position - transform.position).normalized; //cálculo de la dirección enemigo -> player
+        //distance between player and enemy
+        distance = Vector2.Distance(transform.position, player.transform.position);
+        Vector2 direction = player.transform.position - transform.position;
 
-       // _rigidbody.AddForce(direction * speed); //se aplica una fuerza sobre el rigidbody del enemigo hacia el player a la misma velocidad
+        //moves the enemy towards a given pos
+        transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+        direction.Normalize();
+
+        EnemyChase();
     }
-    */
+
+    private void EnemyChase()
+    {
+        //chase range
+        if (distance < 4)
+        {
+            transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+        {
+            anim.SetBool("Attack", true);
+        }
+        else
+        {
+            anim.SetBool("Attack", false);
+        }
+    }
+
+    
 }
