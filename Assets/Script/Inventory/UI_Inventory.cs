@@ -8,13 +8,14 @@ public class UI_Inventory : MonoBehaviour
 
     private Transform itemSlotContainer;
     private Transform itemSlotTemplate;
-
+    
 
     private void Awake()
     {
         //REFERENCES
         itemSlotContainer = transform.Find("itemSlotContainer");
         itemSlotTemplate = transform.Find("itemSlotTemplate");
+        
     }
 
     public void SetInventory(Inventory inventory)
@@ -46,12 +47,13 @@ public class UI_Inventory : MonoBehaviour
                     y++;
                 }
             }
-           /* else
+            else
             {
                 Debug.Log("the item slot template is null");
             }   
-           */
+          
         }
     }
+     
 
 }
