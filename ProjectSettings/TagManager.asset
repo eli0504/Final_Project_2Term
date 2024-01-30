@@ -65,3 +65,6 @@ TagManager:
   - name: items
     uniqueID: 1751013107
     locked: 0
+  - name: houses
+    uniqueID: 4008639233
+    locked: 0

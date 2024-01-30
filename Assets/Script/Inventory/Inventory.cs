@@ -4,21 +4,7 @@ using UnityEngine;
 
 public class Inventory
 {
-    public static Inventory Instance { get; private set; }
-
     private List<Items> itemList;
-
-
-   private void  Awake()
-    {
-        // Singleton
-        if (Instance != null)
-        {
-            Debug.LogError("There is more than one Instance");
-        }
-
-        Instance = this;
-    }
 
     public Inventory()
     {
@@ -27,7 +13,7 @@ public class Inventory
         //display the items
         AddItem(new Items { itemType = Items.ItemType.Sword, amount = 1 });
         AddItem(new Items { itemType = Items.ItemType.HealthPotion, amount = 1 });
-        AddItem(new Items { itemType = Items.ItemType.Rock, amount = 1 });
+        AddItem(new Items { itemType = Items.ItemType.Coin, amount = 1 });
 
         Debug.Log(itemList.Count);
     }

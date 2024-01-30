@@ -37,13 +37,17 @@ public class PlayerController : MonoBehaviour
         rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         boxCollider2D = GetComponentInChildren<BoxCollider2D>();
+
+        //INVENTORY -> passing in the inventory object on to our UI script
+        inventory = new Inventory();
+        ui_Inventory.SetInventory(inventory);
     }
 
     private void Start()
     {
-        //INVENTORY -> passing in the inventory object on to our UI script
-        inventory = new Inventory();
-        ui_Inventory.SetInventory(inventory);
+        
+      
+        
     }
 
     private void Update()
@@ -130,6 +134,8 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("running", true);
             sprite.flipX = false; //for flip to the right direction
+
+
         }
         else if (horizontalInput < 0f) //left direction
         {

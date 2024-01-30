@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UI_Inventory : MonoBehaviour
 {
@@ -38,6 +39,9 @@ public class UI_Inventory : MonoBehaviour
                 RectTransform itemSlotRectTransform = Instantiate(itemSlotTemplate, itemSlotContainer).GetComponent<RectTransform>();
                 itemSlotRectTransform.gameObject.SetActive(true); //enable our container
 
+                Image image = itemSlotRectTransform.Find("image").GetComponent<Image>();
+                image.sprite = item.GetSprite();
+
                  //container pos
                 itemSlotRectTransform.anchoredPosition = new Vector2(x * itemSlotCellSize, y * itemSlotCellSize);
                 x++;
@@ -47,11 +51,7 @@ public class UI_Inventory : MonoBehaviour
                     y++;
                 }
             }
-            else
-            {
-                Debug.Log("the item slot template is null");
-            }   
-          
+               
         }
     }
      
