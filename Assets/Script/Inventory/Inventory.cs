@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,6 +6,8 @@ using UnityEngine;
 public class Inventory
 {
     private List<Items> itemList;
+
+    public event Action OnItemListChanged;
 
     public Inventory()
     {
@@ -22,7 +25,55 @@ public class Inventory
     public void AddItem(Items item)
     {
         itemList.Add(item);
+
+        if (item.IsStackable())
+        {
+            //check if the item is in the inventory
+            bool itemInInventory = false;
+            foreach (Items inventoryItem in itemList)
+            {
+                if (item.itemType == inventoryItem.itemType)
+                {
+                    itemInInventory = true;
+                    inventoryItem.amount += item.amount;
+                }
+            }
+            if (!itemInInventory) { itemList.Add(item); }
+        }
+        else
+        {
+            itemList.Add(item);
+        }
+
+        OnItemListChanged?.Invoke();
     }
+
+    public void RemoveItem(Items item)
+    {
+        if (item.IsStackable())
+        {
+            Items itemInInventory = null;
+            foreach (Items inventoryItem in itemList)
+            {
+                if (item.itemType == inventoryItem.itemType)
+                {
+                    inventoryItem.amount -= item.amount;
+                    itemInInventory = inventoryItem;
+                }
+            }
+            if (itemInInventory != null && itemInInventory.amount <= 0)
+            {
+                itemList.Remove(itemInInventory);
+            }
+        }
+        else
+        {
+            itemList.Remove(item);
+        }
+
+        OnItemListChanged?.Invoke();
+    }
+
 
     public List<Items> GetItemsList()
     { 

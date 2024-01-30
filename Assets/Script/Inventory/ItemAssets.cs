@@ -17,6 +17,8 @@ public class ItemAssets : MonoBehaviour
         Instance = this;
     }
 
+    public Transform itemWorldPrefab;
+
     //Assets
     public Sprite swordSprite;
     public Sprite CoinSprite;

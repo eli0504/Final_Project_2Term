@@ -25,8 +25,9 @@ public class PlayerController : MonoBehaviour
 
     //INVENTORY
     private Inventory inventory;
-    [SerializeField] private UI_Inventory ui_Inventory;
-   
+    [SerializeField] private UI_Inventory uiInventory;
+    private const string ITEM_TAG = "Item";
+
     private void Awake()
     {
         anim = GetComponent<Animator>();
@@ -38,16 +39,12 @@ public class PlayerController : MonoBehaviour
 
         boxCollider2D = GetComponentInChildren<BoxCollider2D>();
 
-        //INVENTORY -> passing in the inventory object on to our UI script
         inventory = new Inventory();
-        ui_Inventory.SetInventory(inventory);
     }
 
     private void Start()
     {
-        
-      
-        
+        uiInventory.SetInventory(inventory);
     }
 
     private void Update()
@@ -78,6 +75,12 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rigidbody2D.velocity = new Vector2(moveSpeed * horizontalInput, rigidbody2D.velocity.y);
+    }
+
+
+    public Vector3 GetPosition()
+    {
+        return transform.position;
     }
 
     private bool IsOnTheGround()
@@ -122,7 +125,15 @@ public class PlayerController : MonoBehaviour
         {
             player.transform.localScale = new Vector3(smallPowerUp, smallPowerUp, smallPowerUp);
         }
-           
+
+        //INVENTORY
+        if (other.gameObject.CompareTag(ITEM_TAG))
+        {
+            ItemWorld itemWorld = other.gameObject.GetComponent<ItemWorld>();
+            inventory.AddItem(itemWorld.GetItem());
+            Destroy(other.gameObject);
+        }
+
     }
 
 
