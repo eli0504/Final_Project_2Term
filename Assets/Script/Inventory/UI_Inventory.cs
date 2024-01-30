@@ -72,7 +72,7 @@ public class UI_Inventory : MonoBehaviour
         TextMeshProUGUI amountText = itemSlotTemplate.Find("Amount Text").GetComponent<TextMeshProUGUI>(); //number of items in grid
         amountText.text = item.amount > 1 ? item.amount.ToString() : "";
 
-        SetUpItemButtonsAction(item, itemSlotTemplate);
+        SetUpItemButtonAction(item, itemSlotTemplate);
     }
 
     private void SetUpItemButtonAction(Items item, Transform itemSlotTemplate)

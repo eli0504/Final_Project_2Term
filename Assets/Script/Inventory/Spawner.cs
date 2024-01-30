@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Spawner : MonoBehaviour
@@ -29,12 +27,6 @@ public class Spawner : MonoBehaviour
                                  {
                                      itemType = Items.ItemType.Coin,
                                      amount = 1
-                                 });
-        ItemWorld.SpawnItemWorld(new Vector3(-2, -3, 0),
-                                 new Items
-                                 {
-                                     itemType = Items.ItemType.Coin,
-                                     amount = 10
                                  });
     }
 }
