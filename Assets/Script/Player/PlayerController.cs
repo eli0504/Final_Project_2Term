@@ -144,13 +144,14 @@ public class PlayerController : MonoBehaviour
         if (horizontalInput > 0f) //right direction
         {
             anim.SetBool("running", true);
-            sprite.flipX = false; //for flip to the right direction
-            
+            //sprite.flipX = false; //for flip to the right direction
+            player.transform.localScale = new Vector3(1, 1, 1);
         }
         else if (horizontalInput < 0f) //left direction
         {
             anim.SetBool("running", true);
-            sprite.flipX = true;
+            // sprite.flipX = true;
+            player.transform.localScale = new Vector3(-1, 1, 1);
         }
         else
         {
