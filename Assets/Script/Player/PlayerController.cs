@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private float horizontalInput;
     private float moveSpeed = 10f;
-    private float jumpSpeed = 9f;
+    private float jumpSpeed = 7f;
 
     private int points;
     private float smallPowerUp = 0.5f;
@@ -145,13 +145,12 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetBool("running", true);
             sprite.flipX = false; //for flip to the right direction
-
-
+            
         }
         else if (horizontalInput < 0f) //left direction
         {
             anim.SetBool("running", true);
-            sprite.flipX = true; 
+            sprite.flipX = true;
         }
         else
         {
