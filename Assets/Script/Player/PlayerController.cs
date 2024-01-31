@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour
 
     private float horizontalInput;
     private float moveSpeed = 10f;
-    private float jumpSpeed = 7f;
+    private float jumpSpeed = 8f;
 
     private int points;
     private float smallPowerUp = 0.5f;
