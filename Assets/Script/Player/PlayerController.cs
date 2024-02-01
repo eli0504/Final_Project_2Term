@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    [SerializeField] private GameOver _gameOver;
+
     public GameObject player;
     private Rigidbody2D rigidbody2D;
 
@@ -15,7 +17,10 @@ public class PlayerController : MonoBehaviour
 
     private float horizontalInput;
     private float moveSpeed = 10f;
-    private float jumpSpeed = 8f;
+    public float jumpSpeed = 25f;
+    public int maxJumps = 2;  // Set the maximum number of jumps allowed
+
+    private int jumpsRemaining;
 
     private int points;
     private float smallPowerUp = 0.5f;
@@ -45,12 +50,17 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         uiInventory.SetInventory(inventory);
+        _gameOver = FindObjectOfType<GameOver>();
+
+
+        jumpsRemaining = maxJumps;
     }
 
     private void Update()
     {
         //JUMP
         horizontalInput = Input.GetAxis("Horizontal");
+
 
         bool isOnTheGround = IsOnTheGround();
         if (Input.GetKeyDown(KeyCode.Space) && isOnTheGround)
@@ -63,18 +73,13 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("jump", false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isOnTheGround)
-        {
-            anim.SetBool("fall", true);
-            Debug.Log("NO POSSIBLE");
-        }
-
         Animations();
     }
 
     private void FixedUpdate()
     {
         rigidbody2D.velocity = new Vector2(moveSpeed * horizontalInput, rigidbody2D.velocity.y);
+    
     }
 
 
@@ -134,8 +139,14 @@ public class PlayerController : MonoBehaviour
             Destroy(other.gameObject);
         }
 
-    }
+        //Traps
+        if (other.gameObject.tag == "traps")
+        {
+           
+        }
 
+
+    }
 
     //ANIMATIONS
     private void Animations()

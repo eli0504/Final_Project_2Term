@@ -10,6 +10,7 @@ TagManager:
   - coins
   - secretRoom
   - smallPowerUp
+  - traps
   layers:
   - Default
   - TransparentFX
