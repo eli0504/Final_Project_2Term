@@ -3,11 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] private GameOver _gameOver;
-
     public GameObject player;
     private Rigidbody2D rigidbody2D;
 
@@ -18,15 +17,18 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float moveSpeed = 10f;
     public float jumpSpeed = 25f;
-    public int maxJumps = 2;  // Set the maximum number of jumps allowed
 
-    private int jumpsRemaining;
-
-    private int points;
     private float smallPowerUp = 0.5f;
+
+    public TextMeshProUGUI counterText;
+    private int Counter;
 
     private BoxCollider2D boxCollider2D;
     [SerializeField] private LayerMask groundLayerMask;
+
+    private float gameTime = 0f;
+    private bool isGameOver = false;
+    public GameObject gameOverPanel;
 
     //INVENTORY
     private Inventory inventory;
@@ -50,10 +52,8 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         uiInventory.SetInventory(inventory);
-        _gameOver = FindObjectOfType<GameOver>();
 
-
-        jumpsRemaining = maxJumps;
+        gameOverPanel.SetActive(false);
     }
 
     private void Update()
@@ -79,7 +79,6 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rigidbody2D.velocity = new Vector2(moveSpeed * horizontalInput, rigidbody2D.velocity.y);
-    
     }
 
 
@@ -122,7 +121,8 @@ public class PlayerController : MonoBehaviour
         if (other.gameObject.tag == "coins")
         {
             Destroy(other.gameObject); //the collectable dissapear 
-            points++;
+            Counter++;
+            counterText.text = $"{Counter}";
         }
 
         //smallPowerUp
@@ -142,12 +142,18 @@ public class PlayerController : MonoBehaviour
         //Traps
         if (other.gameObject.tag == "traps")
         {
-           
+            GameOver();
         }
 
 
     }
 
+    public void GameOver()
+    {
+        isGameOver = true;
+        Time.timeScale = 0f; // Detener el tiempo
+        gameOverPanel.SetActive(true);
+    }
     //ANIMATIONS
     private void Animations()
     {
