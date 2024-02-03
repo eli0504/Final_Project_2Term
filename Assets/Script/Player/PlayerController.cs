@@ -30,6 +30,9 @@ public class PlayerController : MonoBehaviour
     private bool isGameOver = false;
     public GameObject gameOverPanel;
 
+    private int jumps = 0;
+    public int maxJumps = 2;
+
     //INVENTORY
     private Inventory inventory;
     [SerializeField] private UI_Inventory uiInventory;
@@ -58,20 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        //JUMP
-        horizontalInput = Input.GetAxis("Horizontal");
-
-
-        bool isOnTheGround = IsOnTheGround();
-        if (Input.GetKeyDown(KeyCode.Space) && isOnTheGround)
-        {
-            rigidbody2D.velocity = Vector2.up * jumpSpeed;
-            anim.SetBool("jump", true);
-        }
-        else
-        {
-            anim.SetBool("jump", false);
-        }
+        Jump();
 
         Animations();
     }
@@ -87,11 +77,28 @@ public class PlayerController : MonoBehaviour
         return transform.position;
     }
 
+    private void Jump()
+    {
+        //JUMP
+        horizontalInput = Input.GetAxis("Horizontal");
+
+
+        bool isOnTheGround = IsOnTheGround();
+        if (Input.GetKeyDown(KeyCode.Space) && isOnTheGround)
+        {
+            rigidbody2D.velocity = Vector2.up * jumpSpeed;
+            anim.SetBool("jump", true);
+        }
+        else
+        {
+            anim.SetBool("jump", false);
+        }
+    }
     private bool IsOnTheGround()
     {
         float extraHeight = 0.05f;
         RaycastHit2D raycastHit2D = Physics2D.Raycast(boxCollider2D.bounds.center,
-                                                      Vector2.down,
+                                                       Vector2.down,
                                                       boxCollider2D.bounds.extents.y + extraHeight,
                                                       groundLayerMask);
         bool isOnTheGround = raycastHit2D.collider != null;
