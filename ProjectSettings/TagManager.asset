@@ -12,6 +12,9 @@ TagManager:
   - smallPowerUp
   - traps
   - EnterLevel
+  - live
+  - ground
+  - box
   layers:
   - Default
   - TransparentFX

@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour
 
     private float horizontalInput;
     private float moveSpeed = 10f;
-    public float jumpSpeed = 25f;
 
     private float smallPowerUp = 0.5f;
 
@@ -30,13 +29,8 @@ public class PlayerController : MonoBehaviour
     private bool isGameOver = false;
     public GameObject gameOverPanel;
 
-    private int jumps = 0;
-    public int maxJumps = 2;
+    public float jumpSpeed = 25f;
 
-    //INVENTORY
-    private Inventory inventory;
-    [SerializeField] private UI_Inventory uiInventory;
-    private const string ITEM_TAG = "Item";
 
     private void Awake()
     {
@@ -48,14 +42,10 @@ public class PlayerController : MonoBehaviour
         rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         boxCollider2D = GetComponentInChildren<BoxCollider2D>();
-
-        inventory = new Inventory();
     }
 
     private void Start()
     {
-        uiInventory.SetInventory(inventory);
-
         gameOverPanel.SetActive(false);
     }
 
@@ -64,17 +54,12 @@ public class PlayerController : MonoBehaviour
         Jump();
 
         Animations();
+
     }
 
     private void FixedUpdate()
     {
         rigidbody2D.velocity = new Vector2(moveSpeed * horizontalInput, rigidbody2D.velocity.y);
-    }
-
-
-    public Vector3 GetPosition()
-    {
-        return transform.position;
     }
 
     private void Jump()
@@ -94,6 +79,7 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("jump", false);
         }
     }
+
     private bool IsOnTheGround()
     {
         float extraHeight = 0.05f;
@@ -114,6 +100,7 @@ public class PlayerController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
+        //pass to level2
         if (other.gameObject.tag == "PassLevel")
         {
             SceneManager.LoadScene("Level2");
@@ -124,8 +111,8 @@ public class PlayerController : MonoBehaviour
             SceneManager.LoadScene("SecretRoomLevel1");
         }
 
-        //coins
-        if (other.gameObject.tag == "coins")
+       //coins
+            if (other.gameObject.tag == "coins")
         {
             Destroy(other.gameObject); //the collectable dissapear 
             Counter++;
@@ -138,21 +125,11 @@ public class PlayerController : MonoBehaviour
             player.transform.localScale = new Vector3(smallPowerUp, smallPowerUp, smallPowerUp);
         }
 
-        //INVENTORY
-        if (other.gameObject.CompareTag(ITEM_TAG))
-        {
-            ItemWorld itemWorld = other.gameObject.GetComponent<ItemWorld>();
-            inventory.AddItem(itemWorld.GetItem());
-            Destroy(other.gameObject);
-        }
-
         //Traps
         if (other.gameObject.tag == "traps")
         {
             GameOver();
         }
-
-
     }
 
     public void GameOver()
