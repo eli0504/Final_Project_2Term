@@ -23311,6 +23311,9 @@ MonoBehaviour:
   pointA: {fileID: 1689890180}
   pointB: {fileID: 1530198367}
   speed: 2
+  player: {fileID: 8191226695515301007, guid: 7af51bf863cf69644af730a0f7ebb4c4, type: 3}
+  isChasing: 0
+  ChaseDistance: 0
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
