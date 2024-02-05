@@ -12709,6 +12709,14 @@ PrefabInstance:
       propertyPath: gameOverPanel
       value: 
       objectReference: {fileID: 846549913}
+    - target: {fileID: 6630007282778584299, guid: 37b1359d8bf8d2a4688d9727084f17d0, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6630007282778584299, guid: 37b1359d8bf8d2a4688d9727084f17d0, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
