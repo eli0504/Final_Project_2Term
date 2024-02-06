@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1404188012990405474}
   - component: {fileID: 4556983139332290576}
   m_Layer: 0
-  m_Name: On (38x38)_0
+  m_Name: spikeWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
