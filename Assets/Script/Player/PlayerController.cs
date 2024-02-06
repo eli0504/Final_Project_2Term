@@ -7,6 +7,8 @@ using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
+    private GameOver gameOver;
+
     public GameObject player;
     private Rigidbody2D rigidbody2D;
 
@@ -25,10 +27,6 @@ public class PlayerController : MonoBehaviour
     private EdgeCollider2D boxCollider2D;
     [SerializeField] private LayerMask groundLayerMask;
 
-    private float gameTime = 0f;
-    private bool isGameOver = false;
-    public GameObject gameOverPanel;
-
     public float jumpSpeed = 25f;
 
 
@@ -46,7 +44,7 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        gameOverPanel.SetActive(false);
+        gameOver = GetComponent<GameOver>();
     }
 
     private void Update()
@@ -129,15 +127,8 @@ public class PlayerController : MonoBehaviour
         //Traps
         if (other.gameObject.tag == "traps")
         {
-            GameOver();
+            gameOver.IsGameOver();
         }
-    }
-
-    public void GameOver()
-    {
-        isGameOver = true;
-        Time.timeScale = 0f; // Detener el tiempo
-        gameOverPanel.SetActive(true);
     }
 
 

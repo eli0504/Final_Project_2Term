@@ -4,9 +4,15 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
+    public GameOver gameOver;
+
     public GameObject shootProjectile;
     public float launchVelocity = 1000f;
 
+    private void Start()
+    {
+        
+    }
     private void Update()
     {
         if (Input.GetMouseButtonDown(1))
