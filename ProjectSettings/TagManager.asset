@@ -15,6 +15,7 @@ TagManager:
   - live
   - ground
   - box
+  - respawn
   layers:
   - Default
   - TransparentFX
