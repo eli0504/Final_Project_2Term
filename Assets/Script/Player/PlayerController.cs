@@ -22,7 +22,7 @@ public class PlayerController : MonoBehaviour
     public TextMeshProUGUI counterText;
     private int Counter;
 
-    private BoxCollider2D boxCollider2D;
+    private EdgeCollider2D boxCollider2D;
     [SerializeField] private LayerMask groundLayerMask;
 
     private float gameTime = 0f;
@@ -41,7 +41,7 @@ public class PlayerController : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
 
-        boxCollider2D = GetComponentInChildren<BoxCollider2D>();
+        boxCollider2D = GetComponentInChildren<EdgeCollider2D>();
     }
 
     private void Start()
@@ -98,6 +98,7 @@ public class PlayerController : MonoBehaviour
         return isOnTheGround;
     }
 
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         //pass to level2
@@ -112,7 +113,7 @@ public class PlayerController : MonoBehaviour
         }
 
        //coins
-            if (other.gameObject.tag == "coins")
+        if (other.gameObject.tag == "coins")
         {
             Destroy(other.gameObject); //the collectable dissapear 
             Counter++;
@@ -120,7 +121,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //smallPowerUp
-        if (other.gameObject.tag == "smallPowerUp")
+          if (other.gameObject.tag == "smallPowerUp")
         {
             player.transform.localScale = new Vector3(smallPowerUp, smallPowerUp, smallPowerUp);
         }
@@ -138,6 +139,8 @@ public class PlayerController : MonoBehaviour
         Time.timeScale = 0f; // Detener el tiempo
         gameOverPanel.SetActive(true);
     }
+
+
     //ANIMATIONS
     private void Animations()
     {
