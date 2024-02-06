@@ -25422,6 +25422,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 886396425733538118, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       insertIndex: -1
       addedObject: {fileID: 9021172319703642769}
+    - targetCorrespondingSourceObject: {fileID: 886396425733538118, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9021172319703642775}
   m_SourcePrefab: {fileID: 100100000, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
 --- !u!1 &9021172319703642762 stripped
 GameObject:
@@ -25444,13 +25447,6 @@ MonoBehaviour:
   pointB: {fileID: 1530198367}
   speed: 2
   player: {fileID: 2036748954}
-  isChasing: 0
-  ChaseDistance: 2
-  playerInVisionRange: 0
-  playerInAttackRange: 1
-  playerLayer:
-    serializedVersion: 2
-    m_Bits: 64
 --- !u!114 &9021172319703642769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -25464,6 +25460,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameOverPanel: {fileID: 1263626465}
+--- !u!114 &9021172319703642775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9021172319703642762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83bc8b353d963414881803a2fe7125b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 801555894}
+  speed: 2
+  maxChaseRadius: 3.19
+  minChaseRadius: 2.5
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
