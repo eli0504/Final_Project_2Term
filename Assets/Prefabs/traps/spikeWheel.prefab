@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 4556983139332290576}
   - component: {fileID: -7003860862207154109}
   - component: {fileID: -4123723212075635604}
+  - component: {fileID: -1721012995294329521}
   m_Layer: 0
   m_Name: spikeWheel
   m_TagString: Untagged
@@ -148,3 +149,16 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.19
+--- !u!114 &-1721012995294329521
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5967729692698582540}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66c011ca60082a048bad531720100e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 2
