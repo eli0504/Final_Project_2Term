@@ -19,6 +19,7 @@ TagManager:
   - CheckPoint
   - FinalBoss
   - stairs
+  - Edge
   layers:
   - Default
   - TransparentFX

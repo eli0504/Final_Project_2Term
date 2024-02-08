@@ -131,13 +131,16 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("SecretRoomLevel1");
         }
-        else if(other.gameObject.tag == "FinalBoss")
+        
+        
+        //finalboss
+        if (other.gameObject.tag == "FinalBoss")
         {
             SceneManager.LoadScene("FinalBoss");
             Debug.Log("finalBoss");
         }
 
-       //coins
+        //coins
         if (other.gameObject.tag == "coins")
         {
             Destroy(other.gameObject); //the collectable dissapear 
@@ -162,6 +165,12 @@ public class PlayerController : MonoBehaviour
         {
             inStairs = true;
             anim.SetBool("ladder", true);
+        }
+
+        //edges
+        if (other.CompareTag("Edge"))
+        {
+            gameOver.IsGameOver();
         }
     }
 
