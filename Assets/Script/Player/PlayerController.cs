@@ -19,6 +19,9 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float moveSpeed = 10f;
 
+    private bool inStairs = false;
+    public float stairsSpeed = 5f;
+
     private float smallPowerUp = 0.5f;
 
     public TextMeshProUGUI counterText;
@@ -28,6 +31,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private LayerMask groundLayerMask;
 
     public float jumpSpeed = 25f;
+
+    public float speed = 25f;
 
 
     private void Awake()
@@ -50,7 +55,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Jump();
-
+        UpStairs();
         Animations();
 
     }
@@ -58,6 +63,23 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         rigidbody2D.velocity = new Vector2(moveSpeed * horizontalInput, rigidbody2D.velocity.y);
+    }
+
+    private void UpStairs()
+    {
+        float verticalInput = Input.GetAxis("Vertical");
+
+        // Verifica si el jugador está en las escaleras
+        if (inStairs)
+        {
+            // Ajusta el movimiento vertical para que el jugador suba o baje en las escaleras
+            transform.Translate(Vector2.up * verticalInput * stairsSpeed * Time.deltaTime);
+        }
+        else
+        {
+            // El jugador no está en las escaleras, maneja el movimiento normal.
+            transform.Translate(Vector2.up * verticalInput * speed * Time.deltaTime);
+        }
     }
 
     private void Jump()
@@ -109,6 +131,11 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("SecretRoomLevel1");
         }
+        else if(other.gameObject.tag == "FinalBoss")
+        {
+            SceneManager.LoadScene("FinalBoss");
+            Debug.Log("finalBoss");
+        }
 
        //coins
         if (other.gameObject.tag == "coins")
@@ -129,7 +156,24 @@ public class PlayerController : MonoBehaviour
         {
             gameOver.IsGameOver();
         }
+
+        //stairs
+        if (other.CompareTag("stairs"))
+        {
+            inStairs = true;
+            anim.SetBool("ladder", true);
+        }
     }
+
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.CompareTag("stairs"))
+        {
+            inStairs = false;
+            anim.SetBool("ladder", false);
+        }
+    }
+
 
 
     //ANIMATIONS
