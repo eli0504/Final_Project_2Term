@@ -19,6 +19,13 @@ public class enemyController : MonoBehaviour
 
     public Transform player;//player pos
 
+    //chasing
+    public GameObject playerPrefab;
+
+    private float distance;
+    public float maxChaseRadius;
+    public float minChaseRadius;
+
     private void Start()
     {
         chasing = GetComponent<chasing>();
@@ -28,11 +35,15 @@ public class enemyController : MonoBehaviour
 
         currentPoint = pointB.transform; //initial start point
         anim.SetBool("run", true);
+
+
+        playerPrefab = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
-            Patrol();
+       Patrol();
+        Chasing();
     }
 
     public void Patrol()
@@ -61,6 +72,24 @@ public class enemyController : MonoBehaviour
         }
     }
 
+    private void Chasing()
+    {
+        //chasing
+        distance = Vector3.Distance(player.transform.position, transform.position);
+        if (distance <= maxChaseRadius && distance >= minChaseRadius)
+        {
+            
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); //move the enemy to the player 
+            anim.SetBool("attack", true);
+        }
+        else
+        {
+            
+            Patrol();
+           anim.SetBool("attack", false);
+        }
+    }
+
     private void Flip()
     {
         Vector3 localScale = transform.localScale;
@@ -73,6 +102,13 @@ public class enemyController : MonoBehaviour
     {
         Gizmos.DrawWireSphere(pointA.transform.position, 0.5f);
         Gizmos.DrawWireSphere(pointB.transform.position, 0.5f);
+
+        //chasing
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawWireSphere(transform.position, maxChaseRadius);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position, minChaseRadius);
     }
 
 }

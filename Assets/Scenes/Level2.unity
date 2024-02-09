@@ -34309,6 +34309,9 @@ MonoBehaviour:
   pointB: {fileID: 1530198367}
   speed: 2
   player: {fileID: 2036748954}
+  playerPrefab: {fileID: 801555894}
+  maxChaseRadius: 5.5
+  minChaseRadius: 3
 --- !u!114 &9021172319703642769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34329,7 +34332,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9021172319703642762}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 83bc8b353d963414881803a2fe7125b0, type: 3}
   m_Name: 
