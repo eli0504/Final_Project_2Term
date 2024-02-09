@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class enemyController : MonoBehaviour
 {
+    private chasing chasing;
+
     private GameOver gameOver;
 
     private Rigidbody2D rb;
@@ -19,6 +21,7 @@ public class enemyController : MonoBehaviour
 
     private void Start()
     {
+        chasing = GetComponent<chasing>();
         gameOver = GetComponent<GameOver>();
         rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
@@ -32,7 +35,7 @@ public class enemyController : MonoBehaviour
             Patrol();
     }
 
-    private void Patrol()
+    public void Patrol()
     {
         Vector2 point = currentPoint.position - transform.position; //direction my enemy wants to go
         //go to direction A to B
