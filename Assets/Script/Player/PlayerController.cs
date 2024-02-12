@@ -10,24 +10,16 @@ public class PlayerController : MonoBehaviour
     private GameOver gameOver;
 
     public GameObject player;
+
     private Rigidbody2D rigidbody2D;
-
     private Animator anim;
-
     private SpriteRenderer sprite;
-
-    private float horizontalInput;
-    private float moveSpeed = 10f;
-
-  
-
     private EdgeCollider2D boxCollider2D;
     [SerializeField] private LayerMask groundLayerMask;
 
+    private float horizontalInput;
+    private float moveSpeed = 10f;
     public float jumpSpeed = 25f;
-
-    public float speed = 25f;
-
 
     private void Awake()
     {
@@ -48,10 +40,9 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Jump();
-     
-        Animations();
-
+            Jump();
+       
+            Animations();
     }
 
     private void FixedUpdate()

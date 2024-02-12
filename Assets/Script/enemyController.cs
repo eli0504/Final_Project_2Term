@@ -24,7 +24,7 @@ public class enemyController : MonoBehaviour
 
     private float distance;
     private float maxChaseRadius = 3F;
-    private float minChaseRadius = 1f;
+    private float minChaseRadius = 2f;
     //attack
     private float lastAttackTime;
     public float attackCooldown = 1.0f;  // Tiempo de espera entre ataques
@@ -103,14 +103,15 @@ public class enemyController : MonoBehaviour
 
     private void Attack()
     {
+        anim.SetBool("run", false);
         if (Time.time - lastAttackTime > attackCooldown) //el enemigo puede realizar otro ataque
         {
             // Realiza la animación de ataque si tienes un Animator
-            if (anim != null)
+            if (distance <= maxChaseRadius)
             {
                 anim.SetTrigger("attack");
-                Debug.Log("attack");
             }
+           
              lastAttackTime = Time.time;  // Actualiza el tiempo del último ataque
         }
     }
