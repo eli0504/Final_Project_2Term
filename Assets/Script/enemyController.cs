@@ -23,17 +23,23 @@ public class enemyController : MonoBehaviour
     public GameObject playerPrefab;
 
     private float distance;
-    private float maxChaseRadius = 5F;
-    private float minChaseRadius = 3f;
+    private float maxChaseRadius = 3F;
+    private float minChaseRadius = 1f;
+    //attack
+    private float lastAttackTime;
+    public float attackCooldown = 1.0f;  // Tiempo de espera entre ataques
 
+    private void Awake()
+    {
+        rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
 
+    }
     private void Start()
     {
         chasing = GetComponent<chasing>();
         gameOver = GetComponent<GameOver>();
-        rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
-
+       
         currentPoint = pointB.transform; //initial start point
         anim.SetBool("run", true);
 
@@ -43,7 +49,20 @@ public class enemyController : MonoBehaviour
 
     private void Update()
     {
-        
+        distance = Vector3.Distance(player.transform.position, transform.position);
+
+        if (distance <= maxChaseRadius && distance >= minChaseRadius)
+        {
+            Chasing();  // Si el jugador está dentro del radio de persecución, persigue al jugador.
+        }
+        else
+        {
+            Patrol();   // Si el jugador no está dentro del radio, patrulla.
+        }
+        if (distance <= maxChaseRadius)
+        {
+            Attack();  // Si el jugador está dentro del rango de ataque, ataca.
+        }
     }
 
     public void Patrol()
@@ -84,13 +103,15 @@ public class enemyController : MonoBehaviour
 
     private void Attack()
     {
-        if(player)
+        if (Time.time - lastAttackTime > attackCooldown) //el enemigo puede realizar otro ataque
         {
-            anim.SetBool("attack", true);
-        }
-        else
-        {
-            anim.SetBool("attack", false);
+            // Realiza la animación de ataque si tienes un Animator
+            if (anim != null)
+            {
+                anim.SetTrigger("attack");
+                Debug.Log("attack");
+            }
+             lastAttackTime = Time.time;  // Actualiza el tiempo del último ataque
         }
     }
 
