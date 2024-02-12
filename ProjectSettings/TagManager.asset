@@ -20,6 +20,9 @@ TagManager:
   - FinalBoss
   - stairs
   - Edge
+  - keys
+  - box2
+  - bigPowerUp
   layers:
   - Default
   - TransparentFX

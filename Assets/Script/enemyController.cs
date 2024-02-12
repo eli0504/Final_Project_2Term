@@ -23,8 +23,9 @@ public class enemyController : MonoBehaviour
     public GameObject playerPrefab;
 
     private float distance;
-    public float maxChaseRadius;
-    public float minChaseRadius;
+    private float maxChaseRadius = 5F;
+    private float minChaseRadius = 3f;
+
 
     private void Start()
     {
@@ -42,13 +43,12 @@ public class enemyController : MonoBehaviour
 
     private void Update()
     {
-       Patrol();
-        Chasing();
+        
     }
 
     public void Patrol()
     {
-        Vector2 point = currentPoint.position - transform.position; //direction my enemy wants to go
+        Vector2 direction = currentPoint.position - transform.position; //direction my enemy wants to go
         //go to direction A to B
         if (currentPoint == pointB.transform)
         {
@@ -75,18 +75,22 @@ public class enemyController : MonoBehaviour
     private void Chasing()
     {
         //chasing
-        distance = Vector3.Distance(player.transform.position, transform.position);
-        if (distance <= maxChaseRadius && distance >= minChaseRadius)
+        distance = Vector3.Distance(player.transform.position, transform.position); //estado
+        if (distance <= maxChaseRadius && distance >= minChaseRadius) //campos
         {
-            
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); //move the enemy to the player 
+        }
+    }
+
+    private void Attack()
+    {
+        if(player)
+        {
             anim.SetBool("attack", true);
         }
         else
         {
-            
-            Patrol();
-           anim.SetBool("attack", false);
+            anim.SetBool("attack", false);
         }
     }
 
@@ -106,7 +110,7 @@ public class enemyController : MonoBehaviour
         //chasing
         Gizmos.color = Color.yellow;
         Gizmos.DrawWireSphere(transform.position, maxChaseRadius);
-
+        //atttack
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, minChaseRadius);
     }

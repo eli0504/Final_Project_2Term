@@ -19,8 +19,7 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     private float moveSpeed = 10f;
 
-    private bool inStairs = false;
-    public float stairsSpeed = 5f;
+  
 
     private EdgeCollider2D boxCollider2D;
     [SerializeField] private LayerMask groundLayerMask;
@@ -50,7 +49,7 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         Jump();
-        UpStairs();
+     
         Animations();
 
     }
@@ -60,22 +59,7 @@ public class PlayerController : MonoBehaviour
         rigidbody2D.velocity = new Vector2(moveSpeed * horizontalInput, rigidbody2D.velocity.y);
     }
 
-    private void UpStairs()
-    {
-        float verticalInput = Input.GetAxis("Vertical");
-
-        // Verifica si el jugador está en las escaleras
-        if (inStairs)
-        {
-            // Ajusta el movimiento vertical para que el jugador suba o baje en las escaleras
-            transform.Translate(Vector2.up * verticalInput * stairsSpeed * Time.deltaTime);
-        }
-        else
-        {
-            // El jugador no está en las escaleras, maneja el movimiento normal.
-            transform.Translate(Vector2.up * verticalInput * speed * Time.deltaTime);
-        }
-    }
+  
 
     private void Jump()
     {
@@ -121,12 +105,12 @@ public class PlayerController : MonoBehaviour
         if (horizontalInput > 0f) //right direction
         {
             anim.SetBool("running", true);
-            player.transform.localScale = new Vector3(1, 1, 1);
+            transform.rotation = Quaternion.identity;
         }
         else if (horizontalInput < 0f) //left direction
         {
             anim.SetBool("running", true);
-            player.transform.localScale = new Vector3(-1, 1, 1);
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         else
         {

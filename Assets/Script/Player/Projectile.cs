@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public GameOver gameOver;
+    private GameOver gameOver;
 
     public GameObject shootProjectile;
     public float launchVelocity = 1000f;
