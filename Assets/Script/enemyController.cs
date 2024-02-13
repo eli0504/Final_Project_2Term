@@ -103,13 +103,20 @@ public class enemyController : MonoBehaviour
 
     private void Attack()
     {
-        anim.SetBool("run", false);
+       
         if (Time.time - lastAttackTime > attackCooldown) //el enemigo puede realizar otro ataque
         {
             // Realiza la animación de ataque si tienes un Animator
             if (distance <= maxChaseRadius)
             {
+                Flip();
+                anim.SetBool("run", false);
                 anim.SetTrigger("attack");
+            }
+            else
+            {
+                Flip();
+                anim.SetBool("run", true);
             }
            
              lastAttackTime = Time.time;  // Actualiza el tiempo del último ataque

@@ -19,7 +19,9 @@ public class PlayerController : MonoBehaviour
 
     private float horizontalInput;
     private float moveSpeed = 10f;
-    public float jumpSpeed = 25f;
+    public float jumpSpeed = 100f;
+    private bool doubleJump;
+
 
     private void Awake()
     {
@@ -36,13 +38,14 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         gameOver = GetComponent<GameOver>();
+
     }
 
     private void Update()
     {
-            Jump();
-       
-            Animations();
+        Animations();
+
+        Jump();
     }
 
     private void FixedUpdate()
@@ -50,15 +53,14 @@ public class PlayerController : MonoBehaviour
         rigidbody2D.velocity = new Vector2(moveSpeed * horizontalInput, rigidbody2D.velocity.y);
     }
 
-  
+
 
     private void Jump()
     {
         //JUMP
         horizontalInput = Input.GetAxis("Horizontal");
-
-
         bool isOnTheGround = IsOnTheGround();
+
         if (Input.GetKeyDown(KeyCode.Space) && isOnTheGround)
         {
             rigidbody2D.velocity = Vector2.up * jumpSpeed;
@@ -69,25 +71,24 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("jump", false);
         }
     }
+        private bool IsOnTheGround()
+        {
+            float extraHeight = 0.05f;
+            RaycastHit2D raycastHit2D = Physics2D.Raycast(boxCollider2D.bounds.center,
+                                                           Vector2.down,
+                                                          boxCollider2D.bounds.extents.y + extraHeight,
+                                                          groundLayerMask);
+            bool isOnTheGround = raycastHit2D.collider != null;
 
-    private bool IsOnTheGround()
-    {
-        float extraHeight = 0.05f;
-        RaycastHit2D raycastHit2D = Physics2D.Raycast(boxCollider2D.bounds.center,
-                                                       Vector2.down,
-                                                      boxCollider2D.bounds.extents.y + extraHeight,
-                                                      groundLayerMask);
-        bool isOnTheGround = raycastHit2D.collider != null;
+            //visualice raycast
+            Color raycatHitColor = isOnTheGround ? Color.green : Color.red;
+            Debug.DrawRay(boxCollider2D.bounds.center,
+                          Vector2.down * (boxCollider2D.bounds.extents.y + extraHeight),
+                          raycatHitColor);
 
-        //visualice raycast
-        Color raycatHitColor = isOnTheGround ? Color.green : Color.red;
-        Debug.DrawRay(boxCollider2D.bounds.center,
-                      Vector2.down * (boxCollider2D.bounds.extents.y + extraHeight),
-                      raycatHitColor);
-
-        return isOnTheGround;
-    }
-
+            return isOnTheGround;
+        }
+    
 
     //ANIMATIONS
     private void Animations()
