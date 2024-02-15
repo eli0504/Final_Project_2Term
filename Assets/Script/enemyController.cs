@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class enemyController : MonoBehaviour
 {
@@ -29,6 +30,10 @@ public class enemyController : MonoBehaviour
     private float lastAttackTime;
     public float attackCooldown = 1.0f;  // Tiempo de espera entre ataques
 
+    public int damage;
+    public int health;
+    public Slider healthbar;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -49,6 +54,8 @@ public class enemyController : MonoBehaviour
 
     private void Update()
     {
+        healthbar.value = health;
+
         distance = Vector3.Distance(player.transform.position, transform.position);
 
         if (distance <= maxChaseRadius && distance >= minChaseRadius)

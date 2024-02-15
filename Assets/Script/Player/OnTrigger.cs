@@ -115,17 +115,11 @@ public class OnTrigger : MonoBehaviour
         //stairs
         if (other.CompareTag("stairs") && verticalInput > 0) // Verifica si el jugador está en las escaleras
         {
-             
-            // Ajusta el movimiento vertical para que el jugador suba o baje en las escaleras
-            // transform.Translate(Vector2.up * verticalInput * stairsSpeed * Time.deltaTime);
             rigidbody2D.velocity = new Vector2(0, stairsSpeed * verticalInput);
             anim.SetBool("ladder", true);
         }
         else
         {
-            
-            // El jugador no está en las escaleras
-            //transform.Translate(Vector2.up * verticalInput * speed * Time.deltaTime);
             anim.SetBool("ladder", false);
         }
 
