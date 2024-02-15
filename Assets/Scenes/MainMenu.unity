@@ -645,6 +645,7 @@ MonoBehaviour:
   exitButton: {fileID: 533740149}
   settingsButton: {fileID: 34400167}
   creditsButton: {fileID: 2132152374}
+  backButton: {fileID: 0}
 --- !u!1 &1342707702
 GameObject:
   m_ObjectHideFlags: 0
@@ -864,7 +865,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 968537685}
         m_TargetAssemblyTypeName: mainMenu, Assembly-CSharp
-        m_MethodName: GotoLevelOneScene
+        m_MethodName: GotoPlayerPrefScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

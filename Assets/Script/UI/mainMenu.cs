@@ -28,6 +28,12 @@ public class mainMenu : MonoBehaviour
     }
 
     //SCENES
+
+    public void GotoPlayerPrefScene()
+    {
+        SceneManager.LoadScene("PlayerPref");
+    }
+
     public void GotoLevelOneScene()
     {
         SceneManager.LoadScene("Level1");

@@ -16,7 +16,7 @@ public class enemyController : MonoBehaviour
     public GameObject pointB;
 
     private Transform currentPoint;
-    public float speed;
+    public float speed = 5;
 
     public Transform player;//player pos
 
@@ -78,11 +78,13 @@ public class enemyController : MonoBehaviour
         //go to direction A to B
         if (currentPoint == pointB.transform)
         {
-            rb.velocity = new Vector2(speed, 0);
+            rb.velocity = new Vector2(speed * Time.deltaTime, 0);
+            Debug.Log("Changing to Point A");
         }
         else
         {
-            rb.velocity = new Vector2(-speed, 0);
+            rb.velocity = new Vector2(speed * Time.deltaTime, 0);
+
         }
 
         //if enemy reach the current point
@@ -101,7 +103,7 @@ public class enemyController : MonoBehaviour
     private void Chasing()
     {
         //chasing
-        distance = Vector3.Distance(player.transform.position, transform.position); //estado
+       // distance = Vector3.Distance(player.transform.position, transform.position); //estado
         if (distance <= maxChaseRadius && distance >= minChaseRadius) //campos
         {
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); //move the enemy to the player 
@@ -113,20 +115,16 @@ public class enemyController : MonoBehaviour
        
         if (Time.time - lastAttackTime > attackCooldown) //el enemigo puede realizar otro ataque
         {
-            // Realiza la animación de ataque si tienes un Animator
-            if (distance <= maxChaseRadius)
-            {
                 Flip();
                 anim.SetBool("run", false);
                 anim.SetTrigger("attack");
-            }
-            else
-            {
-                Flip();
-                anim.SetBool("run", true);
-            }
-           
-             lastAttackTime = Time.time;  // Actualiza el tiempo del último ataque
+                lastAttackTime = Time.time;  // Actualiza el tiempo del último ataque
+        }
+        else
+        {
+            Flip();
+            anim.SetBool("run", true);
+            lastAttackTime = Time.time;
         }
     }
 

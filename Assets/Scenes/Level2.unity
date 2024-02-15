@@ -1730,7 +1730,7 @@ Transform:
   m_GameObject: {fileID: 230339084}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 44.33, y: 2, z: -1.7956427}
+  m_LocalPosition: {x: 43.84, y: 2, z: -1.7956427}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -13277,7 +13277,7 @@ Transform:
   m_GameObject: {fileID: 485109675}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 52.76, y: 2, z: -1.7956427}
+  m_LocalPosition: {x: 53, y: 2, z: -1.7956427}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -23148,7 +23148,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 820394005828944381, guid: bd7f60c91fae8a8419ddc37e00e602c7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 10.568544
+      value: 9.1
       objectReference: {fileID: 0}
     - target: {fileID: 820394005828944381, guid: bd7f60c91fae8a8419ddc37e00e602c7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -34808,7 +34808,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2956037386368002580, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.140211
+      value: -20.49
       objectReference: {fileID: 0}
     - target: {fileID: 2956037386368002580, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_LocalPosition.y
@@ -34849,6 +34849,10 @@ PrefabInstance:
     - target: {fileID: 3599017827687234796, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_FlipX
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5162057689452264783, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
+      propertyPath: m_Constraints
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5162057689452264783, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_GravityScale
@@ -34942,5 +34946,5 @@ SceneRoots:
   - {fileID: 4115348125857727793}
   - {fileID: 1188775890}
   - {fileID: 360272614}
-  - {fileID: 1202241571}
   - {fileID: 526124352}
+  - {fileID: 1202241571}
