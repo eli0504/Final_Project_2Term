@@ -23293,7 +23293,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 909073322}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 54133e56843c9234b95034fcb3ec2894, type: 3}
   m_Name: 
@@ -23301,8 +23301,8 @@ MonoBehaviour:
   pointA: {fileID: 230339084}
   pointB: {fileID: 485109675}
   speed: 2
-  player: {fileID: 0}
-  playerPrefab: {fileID: 0}
+  player: {fileID: 1790512371}
+  playerPrefab: {fileID: 1790512356}
   attackCooldown: 2
   damage: 0
   health: 0
@@ -32150,6 +32150,11 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.1749897, y: 3.544611}
   m_EdgeRadius: 0
+--- !u!4 &1790512371 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 9070240777065682218, guid: a62564af905f2b545985a87dd5bf2ec5, type: 3}
+  m_PrefabInstance: {fileID: 138419595}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1802110627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -34914,9 +34919,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   pointA: {fileID: 1689890180}
   pointB: {fileID: 1530198367}
-  speed: 2
-  player: {fileID: 0}
-  playerPrefab: {fileID: 0}
+  speed: 1
+  player: {fileID: 1790512371}
+  playerPrefab: {fileID: 1790512356}
   attackCooldown: 2
   damage: 0
   health: 0

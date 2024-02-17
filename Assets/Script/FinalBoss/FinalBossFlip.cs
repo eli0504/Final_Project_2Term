@@ -3,10 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FinalBoss : MonoBehaviour
+public class FinalBossFlip : MonoBehaviour
 {
     public Transform player;
+    public Transform attackPoint;
 
+    public float attackRange = 0.5f;
     public bool isFlipped = false;
 
     public void LookAtPlayer()
@@ -14,16 +16,27 @@ public class FinalBoss : MonoBehaviour
         Vector3 flipped = transform.localScale;
         flipped.z *= -1f;
 
-        if(transform.position.x > player.position.x && isFlipped)
+        if (transform.position.x > player.position.x && isFlipped)
         {
             transform.localScale = flipped;
             transform.Rotate(0f, 180f, 0f);
             isFlipped = false;
-        }else if(transform.position.x < player.position.x && !isFlipped)
+        }
+        else if (transform.position.x < player.position.x && !isFlipped)
         {
             transform.localScale = flipped;
             transform.Rotate(0f, 180f, 0f);
             isFlipped = true;
         }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (attackPoint == null)
+        {
+            return;
+        }
+
+        Gizmos.DrawWireSphere(attackPoint.position, attackRange);
     }
 }

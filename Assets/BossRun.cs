@@ -9,7 +9,7 @@ public class BossRun : StateMachineBehaviour
 
     Transform player;
     Rigidbody2D rb;
-    FinalBoss boss;
+    FinalBossFlip boss;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -17,7 +17,7 @@ public class BossRun : StateMachineBehaviour
         //access to player pos
         player = GameObject.FindGameObjectWithTag("Player").transform;
         rb = animator.GetComponent<Rigidbody2D>();
-        boss = animator.GetComponent<FinalBoss>();
+        boss = animator.GetComponent<FinalBossFlip>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
