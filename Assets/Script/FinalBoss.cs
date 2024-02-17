@@ -5,18 +5,25 @@ using UnityEngine.UI;
 
 public class FinalBoss : MonoBehaviour
 {
-   
+    public Transform player;
 
+    public bool isFlipped = false;
 
-    // Start is called before the first frame update
-    void Start()
+    public void LookAtPlayer()
     {
-        
-    }
+        Vector3 flipped = transform.localScale;
+        flipped.z *= -1f;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if(transform.position.x > player.position.x && isFlipped)
+        {
+            transform.localScale = flipped;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = false;
+        }else if(transform.position.x < player.position.x && !isFlipped)
+        {
+            transform.localScale = flipped;
+            transform.Rotate(0f, 180f, 0f);
+            isFlipped = true;
+        }
     }
 }
