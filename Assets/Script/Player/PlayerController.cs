@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D rigidbody2D;
     private Animator anim;
     private SpriteRenderer sprite;
-    private EdgeCollider2D boxCollider2D;
+    private BoxCollider2D boxCollider2D;
     [SerializeField] private LayerMask groundLayerMask;
 
     private float horizontalInput;
@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
         rigidbody2D = GetComponent<Rigidbody2D>();
         rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
 
-        boxCollider2D = GetComponentInChildren<EdgeCollider2D>();
+        boxCollider2D = GetComponentInChildren<BoxCollider2D>();
     }
 
     private void Start()
@@ -109,14 +109,6 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("running", false);
         }
 
-        //Attack
-        if (Input.GetMouseButtonDown(0))
-        {
-            anim.SetBool("attack", true);
-        }
-        else
-        {
-            anim.SetBool("attack", false);
-        }
+        
     }
 }

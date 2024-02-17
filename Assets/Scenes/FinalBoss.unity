@@ -905,39 +905,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1192176653}
   m_CullTransparentMesh: 1
---- !u!1 &1197297695 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7730062301641313420, guid: a62564af905f2b545985a87dd5bf2ec5, type: 3}
-  m_PrefabInstance: {fileID: 2059914677}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &1197297700 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 7408029469291472820, guid: a62564af905f2b545985a87dd5bf2ec5, type: 3}
-  m_PrefabInstance: {fileID: 2059914677}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1197297701 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9070240777065682218, guid: a62564af905f2b545985a87dd5bf2ec5, type: 3}
   m_PrefabInstance: {fileID: 2059914677}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1197297702
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1197297695}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7d32ef7a0b09e7f45a17e92d671fb6f8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  anim: {fileID: 1197297700}
-  attackPoint: {fileID: 1860684067}
-  attackRange: 0.82
-  enemyLayers:
-    serializedVersion: 2
-    m_Bits: 256
 --- !u!1 &1246646969
 GameObject:
   m_ObjectHideFlags: 0
@@ -4099,11 +4071,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!4 &1860684067 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 1031161860778436403, guid: a62564af905f2b545985a87dd5bf2ec5, type: 3}
-  m_PrefabInstance: {fileID: 2059914677}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1943519126
 GameObject:
   m_ObjectHideFlags: 0
@@ -4383,14 +4350,10 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 1731645532065900499, guid: a62564af905f2b545985a87dd5bf2ec5, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7730062301641313420, guid: a62564af905f2b545985a87dd5bf2ec5, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1197297702}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a62564af905f2b545985a87dd5bf2ec5, type: 3}
 --- !u!1 &2112626291
 GameObject:
