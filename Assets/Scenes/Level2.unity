@@ -1771,7 +1771,7 @@ Transform:
   m_GameObject: {fileID: 230339084}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 43.84, y: 2, z: -1.7956427}
+  m_LocalPosition: {x: 30.269855, y: -2.5474758, z: -1.0224758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2363,7 +2363,7 @@ Transform:
   m_GameObject: {fileID: 360272613}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.10388, y: 3.0854151, z: 0.9923639}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13181,7 +13181,7 @@ Transform:
   m_GameObject: {fileID: 485109675}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 53, y: 2, z: -1.7956427}
+  m_LocalPosition: {x: 39.429855, y: -2.5474758, z: -1.0224758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -16015,7 +16015,7 @@ Transform:
   m_GameObject: {fileID: 1188775889}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -13.570144, y: -4.547476, z: 0.7731669}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -24747,7 +24747,7 @@ Transform:
   m_GameObject: {fileID: 1530198367}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 24, y: 7.9174757, z: -1.7956427}
+  m_LocalPosition: {x: 10.429856, y: 4.6, z: -1.0224758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -28380,7 +28380,7 @@ Transform:
   m_GameObject: {fileID: 1689890180}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.12, y: 7.9174757, z: -1.7956427}
+  m_LocalPosition: {x: 0.5498562, y: 4.6, z: -1.0224758}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -34246,11 +34246,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2956037386368002580, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -20.49
+      value: 6.35
       objectReference: {fileID: 0}
     - target: {fileID: 2956037386368002580, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.5145848
+      value: 4.6
       objectReference: {fileID: 0}
     - target: {fileID: 2956037386368002580, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_LocalPosition.z
@@ -34288,13 +34288,17 @@ PrefabInstance:
       propertyPath: m_FlipX
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3599017827687234796, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
+      propertyPath: m_FlipY
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5162057689452264783, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_Constraints
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5162057689452264783, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_GravityScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5621844503857969146, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_Size.x
@@ -34310,6 +34314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 99861101974773909, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
+    - {fileID: 5162057689452264783, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -34345,11 +34350,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 54133e56843c9234b95034fcb3ec2894, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointA: {fileID: 1689890180}
-  pointB: {fileID: 1530198367}
+  pointA: {fileID: 1689890181}
+  pointB: {fileID: 1530198368}
   speed: 1
   player: {fileID: 1790512371}
-  playerPrefab: {fileID: 1790512356}
   attackCooldown: 2
   damage: 0
   health: 0

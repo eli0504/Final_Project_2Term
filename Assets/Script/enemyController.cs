@@ -5,27 +5,25 @@ using UnityEngine.UI;
 
 public class enemyController : MonoBehaviour
 {
-    private chasing chasing;
+    
 
-    private GameOver gameOver;
 
     private Rigidbody2D rb;
     private Animator anim;
 
-    public GameObject pointA;
-    public GameObject pointB;
+    public Transform pointA;
+    public Transform pointB;
 
     private Transform currentPoint;
     public float speed = 5;
 
+
     public Transform player;//player pos
 
-    //chasing
-    public GameObject playerPrefab;
 
     private float distance;
-    private float maxChaseRadius = 3F;
-    private float minChaseRadius = 2f;
+    private float chaseRadius = 5f;
+    private float attackRadius = 2f;
     //attack
     private float lastAttackTime;
     public float attackCooldown = 1.0f;  // Tiempo de espera entre ataques
@@ -42,111 +40,114 @@ public class enemyController : MonoBehaviour
     }
     private void Start()
     {
-        chasing = GetComponent<chasing>();
-        gameOver = GetComponent<GameOver>();
        
-        currentPoint = pointB.transform; //initial start point
+        currentPoint = pointB; //initial start point
         anim.SetBool("run", true);
-
-
-        playerPrefab = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Update()
     {
       //  healthbar.value = health;
 
-        distance = Vector3.Distance(player.transform.position, transform.position);
+        distance = Vector3.Distance(player.position, transform.position);
 
-        if (distance <= maxChaseRadius && distance >= minChaseRadius)
+        if (distance > chaseRadius)
         {
-            Chasing();  // Si el jugador está dentro del radio de persecución, persigue al jugador.
+            Patrol();  
+        }
+        else if(distance > attackRadius)
+        {
+            Chasing();   
         }
         else
         {
-            Patrol();   // Si el jugador no está dentro del radio, patrulla.
-        }
-        if (distance <= maxChaseRadius)
-        {
             Attack();  // Si el jugador está dentro del rango de ataque, ataca.
         }
+        transform.position = Vector3.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
+        
     }
 
     public void Patrol()
     {
-        Vector2 direction = currentPoint.position - transform.position; //direction my enemy wants to go
-        //go to direction A to B
-        if (currentPoint == pointB.transform)
-        {
-            rb.velocity = new Vector2(speed * Time.deltaTime, 0);
-           
-        }
-        else
-        {
-            rb.velocity = new Vector2(speed * Time.deltaTime, 0);
-
-        }
-
+        anim.SetBool("run", true);
         //if enemy reach the current point
-        if (Vector2.Distance(transform.position, currentPoint.position) < 2f && currentPoint == pointB.transform)
+        if (Vector2.Distance(transform.position, currentPoint.position) < 2f && currentPoint == pointB)
         {
-            Flip();
-            currentPoint = pointA.transform;
+             
+            currentPoint = pointA;
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-        if (Vector2.Distance(transform.position, currentPoint.position) < 2f && currentPoint == pointA.transform)
+        else if (Vector2.Distance(transform.position, currentPoint.position) < 2f && currentPoint == pointA)
         {
-            Flip();
-            currentPoint = pointB.transform;
+            transform.rotation = Quaternion.identity;
+            currentPoint = pointB;
+          
+        } else if (currentPoint == player)
+        {
+            transform.rotation = Quaternion.identity;
+            currentPoint = pointB;
         }
     }
 
     private void Chasing()
     {
+        anim.SetBool("run", true);
+        LookAtPlayer();
+        currentPoint = player;
         //chasing
-       // distance = Vector3.Distance(player.transform.position, transform.position); //estado
-        if (distance <= maxChaseRadius && distance >= minChaseRadius) //campos
-        {
-            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime); //move the enemy to the player 
-        }
+        //transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime); //move the enemy to the player 
+        
     }
 
     private void Attack()
     {
        
-        if (Time.time - lastAttackTime > attackCooldown) //el enemigo puede realizar otro ataque
+        LookAtPlayer();
+        currentPoint = transform; //se queda en el sitio a atacar
+        anim.SetBool("run", false);
+        anim.SetTrigger("attack");
+
+        //if (Time.time - lastAttackTime > attackCooldown) //el enemigo puede realizar otro ataque
+        //{
+        //       // Flip();
+        //        anim.SetBool("run", false);
+        //        anim.SetTrigger("attack");
+        //        lastAttackTime = Time.time;  // Actualiza el tiempo del último ataque
+        //}
+        //else
+        //{
+        //    //Flip();
+        //    anim.SetBool("run", true);
+        //    lastAttackTime = Time.time;
+        //}
+    }
+
+    private void LookAtPlayer()
+    {
+       Vector2 directionToPlayer = player.position - transform.position;
+        Debug.Log("flipping");
+       if(directionToPlayer.x < 0)
         {
-                Flip();
-                anim.SetBool("run", false);
-                anim.SetTrigger("attack");
-                lastAttackTime = Time.time;  // Actualiza el tiempo del último ataque
+            transform.rotation = Quaternion.Euler(0, 180, 0);
         }
         else
         {
-            Flip();
-            anim.SetBool("run", true);
-            lastAttackTime = Time.time;
+            transform.rotation = Quaternion.identity;
         }
-    }
-
-    private void Flip()
-    {
-        Vector3 localScale = transform.localScale;
-        localScale.x *= -1;
-        transform.localScale = localScale;
     }
 
     //visual
     private void OnDrawGizmos()
     {
-        Gizmos.DrawWireSphere(pointA.transform.position, 0.5f);
-        Gizmos.DrawWireSphere(pointB.transform.position, 0.5f);
+        Gizmos.DrawWireSphere(pointA.position, 0.5f);
+        Gizmos.DrawWireSphere(pointB.position, 0.5f);
 
         //chasing
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, maxChaseRadius);
+        Gizmos.DrawWireSphere(transform.position, chaseRadius);
         //atttack
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, minChaseRadius);
+        Gizmos.DrawWireSphere(transform.position, attackRadius);
     }
 
 }
