@@ -19,8 +19,12 @@ public class PlayerController : MonoBehaviour
 
     private float horizontalInput;
     private float moveSpeed = 10f;
-    public float jumpSpeed = 100f;
-    private bool doubleJump;
+    
+
+    //JUMP CONDITIONS
+    public int jumpsMade = 0;
+    public int maxJumps = 2;
+    public float jumpSpeed = 10f;
 
 
     private void Awake()
@@ -43,9 +47,18 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        Animations();
+        RunAnim();
 
-        Jump();
+                //JUMP
+                horizontalInput = Input.GetAxis("Horizontal");
+                bool isOnTheGround = IsOnTheGround();
+
+                if (Input.GetKeyDown(KeyCode.Space) && IsOnTheGround() && jumpsMade < maxJumps)
+                {
+                    rigidbody2D.velocity = Vector2.up * jumpSpeed;
+                    anim.SetTrigger("jump");
+                    jumpsMade++;
+                }
     }
 
     private void FixedUpdate()
@@ -54,25 +67,9 @@ public class PlayerController : MonoBehaviour
     }
 
 
-
-    private void Jump()
-    {
-        //JUMP
-        horizontalInput = Input.GetAxis("Horizontal");
-        bool isOnTheGround = IsOnTheGround();
-
-        if (Input.GetKeyDown(KeyCode.Space) && isOnTheGround)
+    private bool IsOnTheGround()
         {
-            rigidbody2D.velocity = Vector2.up * jumpSpeed;
-            anim.SetBool("jump", true);
-        }
-        else
-        {
-            anim.SetBool("jump", false);
-        }
-    }
-        private bool IsOnTheGround()
-        {
+        jumpsMade = 0;
             float extraHeight = 0.05f;
             RaycastHit2D raycastHit2D = Physics2D.Raycast(boxCollider2D.bounds.center,
                                                            Vector2.down,
@@ -87,11 +84,11 @@ public class PlayerController : MonoBehaviour
                           raycatHitColor);
 
             return isOnTheGround;
-        }
+    }
     
 
-    //ANIMATIONS
-    private void Animations()
+   
+    private void RunAnim()
     {
        //Run
         if (horizontalInput > 0f) //right direction
@@ -107,8 +104,6 @@ public class PlayerController : MonoBehaviour
         else
         {
             anim.SetBool("running", false);
-        }
-
-        
+        } 
     }
 }
