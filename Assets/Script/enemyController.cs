@@ -54,7 +54,7 @@ public class enemyController : MonoBehaviour
 
     private void Update()
     {
-        healthbar.value = health;
+      //  healthbar.value = health;
 
         distance = Vector3.Distance(player.transform.position, transform.position);
 
@@ -79,7 +79,7 @@ public class enemyController : MonoBehaviour
         if (currentPoint == pointB.transform)
         {
             rb.velocity = new Vector2(speed * Time.deltaTime, 0);
-            Debug.Log("Changing to Point A");
+           
         }
         else
         {

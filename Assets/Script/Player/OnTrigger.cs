@@ -13,6 +13,7 @@ public class OnTrigger : MonoBehaviour
     public GameObject player;
     public GameObject bigPotion;
     public GameObject smallPotion;
+    public GameObject heart;
 
     public float speed = 25f;
     public float stairsSpeed = 5f;
@@ -104,7 +105,26 @@ public class OnTrigger : MonoBehaviour
             Instantiate(bigPotion, new Vector3(12, -5, 0), Quaternion.identity);
         }
 
+        //live
+        if (other.CompareTag("live"))
+        {
+            Health.lives++;
+            Destroy(heart);
+        }
+
+
+            //ENEMIES
+            if (other.CompareTag("enemy"))
+        {
+            Health.lives--;
+            if(Health.lives <= 0)
+            {
+                gameOver.IsGameOver();
+                gameObject.SetActive(false);
+            }
+        }
     }
+
 
     private void Update()
     {

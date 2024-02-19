@@ -4,11 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - waterhole
-  - itemSlotContainer
   - PassLevel
   - coins
-  - secretRoom
   - smallPowerUp
   - traps
   - EnterLevel
@@ -24,6 +21,7 @@ TagManager:
   - box2
   - bigPowerUp
   - Ground
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -34,7 +32,7 @@ TagManager:
   - Ground
   - ground2
   - enemy
-  - 
+  - Player
   - 
   - 
   - 
