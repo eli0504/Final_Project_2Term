@@ -28,6 +28,7 @@ public class enemyController : MonoBehaviour
     private float lastAttackTime;
     public float attackCooldown = 1.0f;  // Tiempo de espera entre ataques
 
+    private float xMin = -0.5f, xMax = 0.5f;
 
     private void Awake()
     {
@@ -59,8 +60,6 @@ public class enemyController : MonoBehaviour
         else
         {
             Attack();  // Si el jugador está dentro del rango de ataque, ataca.
-                       //jugador recibe daño
-            healthScript.GetDamage();
         }
         transform.position = Vector3.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
         
@@ -121,6 +120,20 @@ public class enemyController : MonoBehaviour
             transform.rotation = Quaternion.identity;
         }
     }
+
+  /*  private Vector3 EnemyLimits()
+    {
+        //store the transform.position of your car in a new Vector3, i called it "pos"
+        Vector3 pos = transform.position;
+
+        //then access the x value and clamp it
+        pos.x = Mathf.Clamp(xMin, pos., xMax );
+
+        //and don't forget to turn the new "pos" into the transform.position of your car
+        transform.position = pos;
+    }
+  */
+
 
     //visual
     private void OnDrawGizmos()
