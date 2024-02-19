@@ -5,12 +5,19 @@ using UnityEngine.UI;
 
 public class Health : MonoBehaviour
 {
+    private GameOver gameOver;
+
     public static int lives = 3;
     public int numberOfHearts;
 
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
+
+    private void Start()
+    {
+        gameOver = GetComponent<GameOver>();
+    }
 
     private void Update()
     {
@@ -40,4 +47,15 @@ public class Health : MonoBehaviour
             }
         }
     }
+
+    public void GetDamage()
+    {
+        Health.lives--;
+        if (Health.lives <= 0)
+        {
+            gameOver.IsGameOver();
+            gameObject.SetActive(true);
+        }
+    }
+
 }

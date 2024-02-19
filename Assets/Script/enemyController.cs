@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class enemyController : MonoBehaviour
 {
-    
-
+    private Health healthScript;
+    private GameOver gameOver;
 
     private Rigidbody2D rb;
     private Animator anim;
@@ -28,9 +28,6 @@ public class enemyController : MonoBehaviour
     private float lastAttackTime;
     public float attackCooldown = 1.0f;  // Tiempo de espera entre ataques
 
-    public int damage;
-    public int health;
-    public Slider healthbar;
 
     private void Awake()
     {
@@ -40,15 +37,15 @@ public class enemyController : MonoBehaviour
     }
     private void Start()
     {
-       
+        healthScript = GetComponent<Health>();
+        gameOver = GetComponent<GameOver>();
+
         currentPoint = pointB; //initial start point
         anim.SetBool("run", true);
     }
 
     private void Update()
     {
-      //  healthbar.value = health;
-
         distance = Vector3.Distance(player.position, transform.position);
 
         if (distance > chaseRadius)
@@ -62,6 +59,8 @@ public class enemyController : MonoBehaviour
         else
         {
             Attack();  // Si el jugador está dentro del rango de ataque, ataca.
+                       //jugador recibe daño
+            healthScript.GetDamage();
         }
         transform.position = Vector3.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
         
@@ -99,33 +98,20 @@ public class enemyController : MonoBehaviour
         
     }
 
-    private void Attack()
+    public void Attack()
     {
-       
+        
         LookAtPlayer();
         currentPoint = transform; //se queda en el sitio a atacar
         anim.SetBool("run", false);
         anim.SetTrigger("attack");
-
-        //if (Time.time - lastAttackTime > attackCooldown) //el enemigo puede realizar otro ataque
-        //{
-        //       // Flip();
-        //        anim.SetBool("run", false);
-        //        anim.SetTrigger("attack");
-        //        lastAttackTime = Time.time;  // Actualiza el tiempo del último ataque
-        //}
-        //else
-        //{
-        //    //Flip();
-        //    anim.SetBool("run", true);
-        //    lastAttackTime = Time.time;
-        //}
+        
     }
 
     private void LookAtPlayer()
     {
        Vector2 directionToPlayer = player.position - transform.position;
-        Debug.Log("flipping");
+    
        if(directionToPlayer.x < 0)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);

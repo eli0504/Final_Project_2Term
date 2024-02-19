@@ -84,7 +84,12 @@ public class OnTrigger : MonoBehaviour
         //Traps
         if (other.gameObject.tag == "traps")
         {
-            gameOver.IsGameOver();
+            Health.lives--;
+            if (Health.lives <= 0)
+            {
+                gameOver.IsGameOver();
+                gameObject.SetActive(true);
+            }
         }
 
       
@@ -113,16 +118,16 @@ public class OnTrigger : MonoBehaviour
         }
 
 
-            //ENEMIES
-            if (other.CompareTag("enemy"))
+        /*//ENEMIES
+        if (other.CompareTag("enemy"))
         {
             Health.lives--;
             if(Health.lives <= 0)
             {
                 gameOver.IsGameOver();
-                gameObject.SetActive(false);
+                gameObject.SetActive(true);
             }
-        }
+        }*/
     }
 
 
