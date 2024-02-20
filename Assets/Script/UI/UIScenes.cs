@@ -6,9 +6,9 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class mainMenu : MonoBehaviour
+public class UIScenes : MonoBehaviour
 {
-    public static mainMenu Instance { get; private set; }
+    public static UIScenes Instance { get; private set; }
     //VARIABLES BUTTONS
     [SerializeField] private Button playButton;
     [SerializeField] private Button exitButton;
@@ -39,6 +39,13 @@ public class mainMenu : MonoBehaviour
         
         SceneManager.LoadScene("Level1");
     }
+
+    public void GotoLevelTwoScene()
+    {
+
+        SceneManager.LoadScene("Level2");
+    }
+
     public void GotoCreditsScene()
     {
         SceneManager.LoadScene("Credits");

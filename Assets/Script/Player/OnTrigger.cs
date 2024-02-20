@@ -49,11 +49,7 @@ public class OnTrigger : MonoBehaviour
         {
         
             SceneManager.LoadScene("Level2");
-            Debug.Log("You will pass to the next level!");
-        }
-        else if (other.gameObject.tag == "secretRoom")
-        {
-            SceneManager.LoadScene("SecretRoomLevel1");
+    
         }
         else if (other.gameObject.tag == "FinalBoss")
         {

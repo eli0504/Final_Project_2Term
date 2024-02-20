@@ -1,8 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System;
 
 public class UIPause : MonoBehaviour
@@ -34,7 +34,7 @@ public class UIPause : MonoBehaviour
         mainMenuButton.onClick.AddListener(() =>
         {
             Time.timeScale = 1f;
-            Loader.Load(Loader.Scene.MainMenu);
+         
         });
 
         QuitPausePanel();
