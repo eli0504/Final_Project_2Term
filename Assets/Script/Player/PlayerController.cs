@@ -31,11 +31,11 @@ public class PlayerController : MonoBehaviour
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
 
         sprite = GetComponent<SpriteRenderer>();
 
-        rigidbody2D = GetComponent<Rigidbody2D>();
+        rigidbody2D = GetComponentInChildren<Rigidbody2D>();
         rigidbody2D.constraints = RigidbodyConstraints2D.FreezeRotation;
 
         boxCollider2D = GetComponentInChildren<BoxCollider2D>();

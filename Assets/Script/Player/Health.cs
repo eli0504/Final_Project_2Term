@@ -2,16 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.Rendering;
-using UnityEngine.Rendering.PostProcessing;
-
 public class Health : MonoBehaviour
 {
-    public float intensity = 0f;
-    //PostProcessVolume volume;
-    Vignette vignette;
-
     private GameOver gameOver;
+    private DamageEffects damageEffects;
 
     public static int lives = 3;
     public int numberOfHearts;
@@ -23,6 +17,7 @@ public class Health : MonoBehaviour
     private void Start()
     {
         gameOver = GetComponent<GameOver>();
+        damageEffects = GetComponent<DamageEffects>();
     }
 
     private void Update()
@@ -57,11 +52,11 @@ public class Health : MonoBehaviour
     public void GetDamage()
     {
         Health.lives--;
+        damageEffects.TakeDamageEffect();
         if (Health.lives <= 0)
         {
             gameOver.IsGameOver();
             gameObject.SetActive(true);
         }
     }
-
 }
