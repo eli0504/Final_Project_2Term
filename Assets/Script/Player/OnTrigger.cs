@@ -7,6 +7,8 @@ using TMPro;
 
 public class OnTrigger : MonoBehaviour
 {
+    private DamageEffects damageEffects;
+
     public TextMeshProUGUI coinsCounterText;
     public TextMeshProUGUI keysCounterText;
 
@@ -30,11 +32,12 @@ public class OnTrigger : MonoBehaviour
     private float verticalInput;
     private void Awake()
     {
-        rigidbody2D = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animator>();
+        rigidbody2D = GetComponentInChildren<Rigidbody2D>();
+        anim = GetComponentInChildren<Animator>();
     }
     private void Start()
     {
+        damageEffects = GetComponent<DamageEffects>();
         gameOver = GetComponent<GameOver>();
     }
 
@@ -85,6 +88,8 @@ public class OnTrigger : MonoBehaviour
         if (other.gameObject.tag == "traps")
         {
             Health.lives--;
+           // damageEffects.TakeDamageEffect();
+   
             if (Health.lives <= 0)
             {
                 gameOver.IsGameOver();

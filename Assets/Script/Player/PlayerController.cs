@@ -84,7 +84,7 @@ public class PlayerController : MonoBehaviour
         {
             jumpsMade = 0;
         }//operador ternario (if else)
-        Debug.Log(jumpsMade);
+
 
         //visualice raycast
         Color raycatHitColor = isOnTheGround ? Color.green : Color.red;

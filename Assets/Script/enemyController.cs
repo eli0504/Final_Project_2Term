@@ -28,7 +28,7 @@ public class enemyController : MonoBehaviour
     private float lastAttackTime;
     public float attackCooldown = 1.0f;  // Tiempo de espera entre ataques
 
-    private float xMin = -0.5f, xMax = 0.5f;
+    private float xMin = 0.3f, xMax = 10.3f;
 
     private void Awake()
     {
@@ -47,8 +47,9 @@ public class enemyController : MonoBehaviour
 
     private void Update()
     {
+        EnemyLimits();
         distance = Vector3.Distance(player.position, transform.position);
-
+      
         if (distance > chaseRadius)
         {
             Patrol();  
@@ -121,19 +122,12 @@ public class enemyController : MonoBehaviour
         }
     }
 
-  /*  private Vector3 EnemyLimits()
-    {
-        //store the transform.position of your car in a new Vector3, i called it "pos"
-        Vector3 pos = transform.position;
+     private void EnemyLimits()
+     {
+        transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0.3f, 10.3f), transform.position.y, 0);
+     }
 
-        //then access the x value and clamp it
-        pos.x = Mathf.Clamp(xMin, pos., xMax );
-
-        //and don't forget to turn the new "pos" into the transform.position of your car
-        transform.position = pos;
-    }
-  */
-
+   
 
     //visual
     private void OnDrawGizmos()

@@ -5,7 +5,6 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     private GameOver gameOver;
-    private DamageEffects damageEffects;
 
     public static int lives = 3;
     public int numberOfHearts;
@@ -17,7 +16,6 @@ public class Health : MonoBehaviour
     private void Start()
     {
         gameOver = GetComponent<GameOver>();
-        damageEffects = GetComponent<DamageEffects>();
     }
 
     private void Update()
@@ -52,7 +50,7 @@ public class Health : MonoBehaviour
     public void GetDamage()
     {
         Health.lives--;
-        damageEffects.TakeDamageEffect();
+        
         if (Health.lives <= 0)
         {
             gameOver.IsGameOver();

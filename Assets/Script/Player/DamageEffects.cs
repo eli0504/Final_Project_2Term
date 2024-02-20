@@ -11,13 +11,17 @@ public class DamageEffects : MonoBehaviour
     PostProcessVolume volume;
     Vignette vignette;
 
+    private void Update()
+    {
+        StartCoroutine(TakeDamageEffect());
+    }
+
     private void Start()
     {
         volume = GetComponent<PostProcessVolume>();
-        //vignette = GetComponent<Vignette>();
         volume.profile.TryGetSettings<Vignette>(out vignette);
 
-        if (vignette != null)
+        if (!vignette)
         {
             print("error, vignette empty");
         }

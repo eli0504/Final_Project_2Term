@@ -15,7 +15,7 @@ public class PlayerCombat : MonoBehaviour
 
     private void Awake()
     {
-        anim = GetComponent<Animator>();
+        anim = GetComponentInChildren<Animator>();
 
     }
 
