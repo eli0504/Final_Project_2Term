@@ -2,9 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.PostProcessing;
 
 public class Health : MonoBehaviour
 {
+    public float intensity = 0f;
+    //PostProcessVolume volume;
+    Vignette vignette;
+
     private GameOver gameOver;
 
     public static int lives = 3;

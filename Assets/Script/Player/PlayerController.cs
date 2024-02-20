@@ -26,6 +26,8 @@ public class PlayerController : MonoBehaviour
     public int maxJumps = 2;
     public float jumpSpeed = 10f;
 
+    private float xMinRange = -38f;
+    private float xMaxRange = 7f; //límite pantalla horizontal
 
     private void Awake()
     {
@@ -51,13 +53,14 @@ public class PlayerController : MonoBehaviour
 
                 //JUMP
                 horizontalInput = Input.GetAxis("Horizontal");
-                bool isOnTheGround = IsOnTheGround();
+                //bool isOnTheGround = IsOnTheGround();
 
-                if (Input.GetKeyDown(KeyCode.Space) && IsOnTheGround() && jumpsMade < maxJumps)
+                if (Input.GetKeyDown(KeyCode.Space) && (IsOnTheGround() || jumpsMade < maxJumps))
                 {
                     rigidbody2D.velocity = Vector2.up * jumpSpeed;
                     anim.SetTrigger("jump");
                     jumpsMade++;
+        
                 }
     }
 
@@ -68,26 +71,47 @@ public class PlayerController : MonoBehaviour
 
 
     private bool IsOnTheGround()
+    {
+
+        float extraHeight = 0.025f;
+        RaycastHit2D raycastHit2D = Physics2D.Raycast(boxCollider2D.bounds.center,
+                                                        Vector2.down,
+                                                        boxCollider2D.bounds.extents.y + extraHeight,
+                                                        groundLayerMask);
+        bool isOnTheGround = raycastHit2D.collider != null;//comprobacion
+     
+        if (isOnTheGround)
         {
-        jumpsMade = 0;
-            float extraHeight = 0.05f;
-            RaycastHit2D raycastHit2D = Physics2D.Raycast(boxCollider2D.bounds.center,
-                                                           Vector2.down,
-                                                          boxCollider2D.bounds.extents.y + extraHeight,
-                                                          groundLayerMask);
-            bool isOnTheGround = raycastHit2D.collider != null;
+            jumpsMade = 0;
+        }//operador ternario (if else)
+        Debug.Log(jumpsMade);
 
-            //visualice raycast
-            Color raycatHitColor = isOnTheGround ? Color.green : Color.red;
-            Debug.DrawRay(boxCollider2D.bounds.center,
-                          Vector2.down * (boxCollider2D.bounds.extents.y + extraHeight),
-                          raycatHitColor);
+        //visualice raycast
+        Color raycatHitColor = isOnTheGround ? Color.green : Color.red;
+        Debug.DrawRay(boxCollider2D.bounds.center,
+                        Vector2.down * (boxCollider2D.bounds.extents.y + extraHeight),
+                        raycatHitColor);
 
-            return isOnTheGround;
+        return isOnTheGround;
+
+
     }
-    
 
-   
+    /*private void PlayerInBounds()
+    {
+        Vector2 pos = transform.position;
+        if (pos.x < -xRange)
+        {
+            transform.position = new Vector3(-xRange, pos.y);
+        }
+
+        if (pos.x > xRange)
+        {
+            transform.position = new Vector3(xRange, pos.y);
+        }
+    }*/
+
+
     private void RunAnim()
     {
        //Run

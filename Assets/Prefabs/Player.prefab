@@ -158,6 +158,8 @@ MonoBehaviour:
   groundLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  jumpsMade: 0
+  maxJumps: 2
   jumpSpeed: 25
 --- !u!50 &3265885457387532942
 Rigidbody2D:

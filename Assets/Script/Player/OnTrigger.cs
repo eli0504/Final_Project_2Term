@@ -93,11 +93,11 @@ public class OnTrigger : MonoBehaviour
         }
 
       
-        //edges
+       /* //edges
         if (other.CompareTag("Edge"))
         {
             gameOver.IsGameOver();
-        }
+        }*/
 
         //box
         if (other.CompareTag("box"))
