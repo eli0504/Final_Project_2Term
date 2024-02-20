@@ -36,6 +36,7 @@ public class mainMenu : MonoBehaviour
 
     public void GotoLevelOneScene()
     {
+        
         SceneManager.LoadScene("Level1");
     }
     public void GotoCreditsScene()

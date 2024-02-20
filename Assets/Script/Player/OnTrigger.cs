@@ -8,7 +8,7 @@ using TMPro;
 public class OnTrigger : MonoBehaviour
 {
     private DamageEffects damageEffects;
-
+    private PlayerDataPersistence playerDataPersistence;
     public TextMeshProUGUI coinsCounterText;
     public TextMeshProUGUI keysCounterText;
 
@@ -37,6 +37,7 @@ public class OnTrigger : MonoBehaviour
     }
     private void Start()
     {
+        playerDataPersistence = GetComponent<PlayerDataPersistence>();
         damageEffects = GetComponent<DamageEffects>();
         gameOver = GetComponent<GameOver>();
     }
@@ -46,6 +47,7 @@ public class OnTrigger : MonoBehaviour
         //pass to level2
         if (other.gameObject.tag == "PassLevel")
         {
+        
             SceneManager.LoadScene("Level2");
             Debug.Log("You will pass to the next level!");
         }
