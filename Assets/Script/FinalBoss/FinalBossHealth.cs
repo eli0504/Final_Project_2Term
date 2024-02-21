@@ -1,35 +1,55 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class FinalBossHealth : MonoBehaviour
 {
-    public int health = 500;
+    public Animator anim;
 
-    public bool isInvulnerable = false;
+    public int maxHealth = 100;
+    private float currentHealth;
+
+    public Slider healthSlider;
+
+    public float damageValue = 20f; //damage from th player
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+
+        currentHealth = maxHealth;
+        UpdateHealth();
+    }
 
     //called when player hits
-    public void TakeDamage(int damage)
+    public void TakeDamage()
     {
-        if (isInvulnerable) //if we try to damage the boss and is invunerable just return out and dont do nothing
-            return;
+        // Reduzca la salud del enemigo cuando recibe daño
+        currentHealth -= damageValue;
 
-            health -= damage;
-        
+        // Asegúrate de que la salud no sea menor que cero
+        currentHealth = Mathf.Max(currentHealth, 0f);
 
-        if(health <= 200)
-        {
-            GetComponent<Animator>().SetBool("isEnraged", true);
-        }
+        // Actualiza la barra de vida
+        UpdateHealth();
 
-        if(health <= 0)
+        // Verifica si el enemigo ha muerto
+        if (currentHealth == 0f)
         {
             Die();
+            anim.SetBool("isDead", true);
         }
     }
 
     private void Die()
     {
         Destroy(gameObject);
+    }
+
+    void UpdateHealth()
+    {
+        // Actualiza el valor del Slider
+        healthSlider.value = currentHealth / maxHealth;
     }
 }
