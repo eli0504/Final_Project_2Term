@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerCombat : MonoBehaviour
 {
+    private EnemyHealth enemyHealth;
     public Animator anim;
 
     public Transform attackPoint;
@@ -13,10 +14,14 @@ public class PlayerCombat : MonoBehaviour
     public float attackRange = 0.5f;
     public int attackDamage = 40;
 
+    private void Start()
+    {
+        enemyHealth = GetComponent<EnemyHealth>();
+    }
+
     private void Awake()
     {
         anim = GetComponentInChildren<Animator>();
-
     }
 
     void Update()
@@ -39,8 +44,11 @@ public class PlayerCombat : MonoBehaviour
         {
             enemy.GetComponent<EnemyHealth>().TakeDamage();
         }
-
-        GetComponent<EnemyHealth>().TakeDamage();
+        if (enemyHealth != null)
+        {
+            enemyHealth.TakeDamage();
+        }
+          
     }
 
     private void OnDrawGizmosSelected()
