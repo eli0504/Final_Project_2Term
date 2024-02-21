@@ -14,6 +14,10 @@ public class EnemyHealth : MonoBehaviour
 
     public float damageValue = 20f; //damage from th player
 
+    public GameObject keyPrefab;
+
+  
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -38,6 +42,7 @@ public class EnemyHealth : MonoBehaviour
         {
             Died();
             anim.SetBool("isDead", true);
+            Instantiate(keyPrefab, transform.position, Quaternion.identity);
         }
     }
 
@@ -48,6 +53,7 @@ public class EnemyHealth : MonoBehaviour
         anim.SetBool("isDead", true);
 
         Destroy(gameObject);
+       
     }
 
     void UpdateHealth()

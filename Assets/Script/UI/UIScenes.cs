@@ -15,6 +15,7 @@ public class UIScenes : MonoBehaviour
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button creditsButton;
     [SerializeField] private Button backButton;
+    [SerializeField] private Button mainMenu;
 
     private void Awake()
     {

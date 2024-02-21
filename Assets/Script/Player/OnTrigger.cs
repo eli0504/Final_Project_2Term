@@ -24,6 +24,8 @@ public class OnTrigger : MonoBehaviour
     private int coinsCounter;
     private int keysCounter;
 
+    public GameObject winPanel;
+
     private GameOver gameOver;
     private Animator anim;
 
@@ -40,6 +42,8 @@ public class OnTrigger : MonoBehaviour
         playerDataPersistence = GetComponent<PlayerDataPersistence>();
         damageEffects = GetComponent<DamageEffects>();
         gameOver = GetComponent<GameOver>();
+
+        winPanel.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -71,6 +75,13 @@ public class OnTrigger : MonoBehaviour
             Destroy(other.gameObject); //the collectable dissapear 
             keysCounter++;
             keysCounterText.text = $"{keysCounter}";
+        }else if((other.gameObject.tag == "goldKey"))
+        {
+            Destroy(other.gameObject); //the collectable dissapear 
+            keysCounter++;
+            keysCounterText.text = $"{keysCounter}";
+            Time.timeScale = 0f;
+            winPanel.SetActive(true);
         }
 
         //smallPowerUp

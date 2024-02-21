@@ -11,6 +11,7 @@ public class UIPause : MonoBehaviour
 
     //VARIABLES
     [SerializeField] private GameObject pausePanel;
+    [SerializeField] private GameObject winPanel;
 
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button creditsButton;
