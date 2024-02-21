@@ -1,29 +1,43 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemyHealth : MonoBehaviour
 {
     public Animator anim;
 
     public int maxHealth = 100;
-    int currentHealth;
+    private float currentHealth;
+
+    public Slider healthSlider;
+
+    public float damageValue = 20f; //damage from th player
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
+        anim = GetComponent<Animator>();
+
         currentHealth = maxHealth;
+        UpdateHealth();
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage()
     {
-        currentHealth -= damage;
+        // Reduzca la salud del enemigo cuando recibe daño
+        currentHealth -= damageValue;
+        // Asegúrate de que la salud no sea menor que cero
+        currentHealth = Mathf.Max(currentHealth, 0f);
+        // Actualiza la barra de vida
+        UpdateHealth();
 
         anim.SetTrigger("hurt");
 
         if(currentHealth <= 0)
         {
             Died();
+            anim.SetBool("isDead", true);
         }
     }
 
@@ -33,7 +47,12 @@ public class EnemyHealth : MonoBehaviour
 
         anim.SetBool("isDead", true);
 
-        GetComponent<Collider2D>().enabled = false;
-        this.enabled = false;
+        Destroy(gameObject);
+    }
+
+    void UpdateHealth()
+    {
+        // Actualiza el valor del Slider
+        healthSlider.value = currentHealth / maxHealth;
     }
 }
