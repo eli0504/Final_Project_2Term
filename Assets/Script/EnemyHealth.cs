@@ -56,7 +56,7 @@ public class EnemyHealth : MonoBehaviour
        
     }
 
-    public void UpdateHealth()
+    void UpdateHealth()
     {
         // Actualiza el valor del Slider
         healthSlider.value = currentHealth / maxHealth;
