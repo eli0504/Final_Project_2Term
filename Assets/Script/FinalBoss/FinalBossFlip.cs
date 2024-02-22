@@ -9,8 +9,9 @@ public class FinalBossFlip : MonoBehaviour
     public Transform attackPoint;
 
     public float attackRange = 0.5f;
-    public bool isFlipped = false;
-
+    //public bool isFlipped = false;
+    private bool isFlipped = true;
+  //  private bool lookAtRight = true;
     public void LookAtPlayer()
     {
         Vector3 flipped = transform.localScale;
@@ -28,6 +29,12 @@ public class FinalBossFlip : MonoBehaviour
             transform.Rotate(0f, 180f, 0f);
             isFlipped = true;
         }
+
+       /* if((player.position.x > transform.position.x && !lookAtRight) || (player.position.x < transform.position.x && lookAtRight))
+        {
+            lookAtRight = !lookAtRight;
+            transform.eulerAngles = new Vector3(0, transform.eulerAngles.y + 180, 0);
+        }*/
     }
 
     private void OnDrawGizmosSelected()

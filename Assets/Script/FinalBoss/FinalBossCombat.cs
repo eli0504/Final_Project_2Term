@@ -5,11 +5,21 @@ using UnityEngine;
 public class FinalBossCombat : MonoBehaviour
 {
     private Animator animator;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     public Transform player;
 
     private EnemyHealth enemyHealthBar;
     private float live;
+
+    [SerializeField] Transform attackPoint;
+    [SerializeField] private float attackRadius;
+    [SerializeField] private float damage;
+
+    private void Update()
+    {
+        float playerDistance = Vector2.Distance(transform.position, player.position);
+        animator.SetFloat("player_distance", playerDistance);
+    }
 
     private void Start()
     {
@@ -17,4 +27,8 @@ public class FinalBossCombat : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
+    private void Attack()
+    {
+
+    }
 }
