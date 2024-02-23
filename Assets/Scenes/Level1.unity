@@ -2875,7 +2875,6 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
-  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3001,19 +3000,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &519420033
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 494d5be7b93f1414da5cb3f0f258e939, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  player: {fileID: 0}
 --- !u!1001 &535117004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5281,7 +5267,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1421305121}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIPause, Assembly-CSharp
         m_MethodName: GotoCreditsScene
         m_Mode: 1
@@ -5414,7 +5400,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1421305121}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIPause, Assembly-CSharp
         m_MethodName: GotoCreditsScene
         m_Mode: 1
@@ -7692,37 +7678,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1009508463}
   m_CullTransparentMesh: 1
---- !u!1 &1030213877
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1030213878}
-  m_Layer: 0
-  m_Name: GameManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1030213878
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1030213877}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.6368484, y: -0.36776602, z: -20.159382}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1069857284
 GameObject:
   m_ObjectHideFlags: 0
@@ -8202,7 +8157,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1421305121}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIPause, Assembly-CSharp
         m_MethodName: GotoMainMenuScene
         m_Mode: 1
@@ -8434,7 +8389,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1421305121}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: UIPause, Assembly-CSharp
         m_MethodName: GotoSettingsScene
         m_Mode: 1
@@ -8747,7 +8702,6 @@ GameObject:
   - component: {fileID: 1421305119}
   - component: {fileID: 1421305118}
   - component: {fileID: 1421305117}
-  - component: {fileID: 1421305121}
   - component: {fileID: 1421305122}
   m_Layer: 5
   m_Name: Canvas
@@ -8842,24 +8796,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &1421305121
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1421305115}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d8eb7c8c226a0a43a5a80b35b0dcf75, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pausePanel: {fileID: 1330660186}
-  winPanel: {fileID: 0}
-  settingsButton: {fileID: 1240266373}
-  creditsButton: {fileID: 919250504}
-  mainMenuButton: {fileID: 1166524162}
-  resumeButton: {fileID: 923386853}
 --- !u!114 &1421305122
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8872,6 +8808,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9d93f7f8c1f68a4c867c7903381fd9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pausePanel: {fileID: 1330660186}
+  winPanel: {fileID: 0}
+  settingsButton: {fileID: 0}
+  creditsButton: {fileID: 0}
+  mainMenuButton: {fileID: 0}
+  resumeButton: {fileID: 0}
+  playButton: {fileID: 0}
+  exitButton: {fileID: 0}
+  backButton: {fileID: 0}
+  mainMenu: {fileID: 0}
 --- !u!1 &1422696654
 GameObject:
   m_ObjectHideFlags: 0
@@ -20029,10 +19975,9 @@ SceneRoots:
   - {fileID: 519420032}
   - {fileID: 619394802}
   - {fileID: 1811911513}
-  - {fileID: 1749953711}
   - {fileID: 1421305120}
   - {fileID: 835749393}
   - {fileID: 799642241}
   - {fileID: 668523524}
-  - {fileID: 1030213878}
   - {fileID: 2040970416}
+  - {fileID: 1749953711}
