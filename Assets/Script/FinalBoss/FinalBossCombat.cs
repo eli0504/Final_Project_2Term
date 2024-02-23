@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FinalBossCombat : MonoBehaviour
 {
-<<<<<<< HEAD
+
     private Animator animator;
     public Rigidbody2D rb;
     public Transform player;
@@ -27,12 +27,4 @@ public class FinalBossCombat : MonoBehaviour
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
     }
-
-    private void Attack()
-    {
-
-    }
-=======
-    
->>>>>>> parent of 23f4b3f (newboss)
 }
