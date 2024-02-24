@@ -51,10 +51,11 @@ public class Health : MonoBehaviour
 
     public void GetDamage()
     {
-        Health.lives--;
-        
-        if (Health.lives <= 0)
+        lives--;
+        audioLibrary.PlaySound("hurt");
+        if (lives <= 0)
         {
+            audioLibrary.PlaySound("gameOverSound");
             gameOver.IsGameOver();
             gameObject.SetActive(true);
             anim.SetTrigger("isDead");

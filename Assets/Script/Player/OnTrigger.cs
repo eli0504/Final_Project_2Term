@@ -27,22 +27,28 @@ public class OnTrigger : MonoBehaviour
     public GameObject winPanel;
 
     private GameOver gameOver;
+    private Health healthScript;
+
     private Animator anim;
 
+    private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidbody2D;
+    private BoxCollider2D boxCollider;
 
     private float verticalInput;
     private void Awake()
     {
+        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         rigidbody2D = GetComponentInChildren<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
+        boxCollider = GetComponentInChildren<BoxCollider2D>();
     }
     private void Start()
     {
         playerDataPersistence = GetComponent<PlayerDataPersistence>();
         damageEffects = GetComponent<DamageEffects>();
         gameOver = GetComponent<GameOver>();
-
+        healthScript = GetComponent<Health>();
         winPanel.SetActive(false);
     }
 
@@ -64,6 +70,7 @@ public class OnTrigger : MonoBehaviour
         //coins
         if (other.gameObject.tag == "coins")
         {
+            audioLibrary.PlaySound("coin");
             Destroy(other.gameObject); //the collectable dissapear 
             coinsCounter++;
             coinsCounterText.text = $"{coinsCounter}";
@@ -87,31 +94,22 @@ public class OnTrigger : MonoBehaviour
         //smallPowerUp
         if (other.gameObject.tag == "smallPowerUp")
         {
+            audioLibrary.PlaySound("poison");
             player.transform.localScale = new Vector3(smallPowerUp, smallPowerUp, 0);
-        }else if(other.gameObject.tag == "bigPowerUp")
+        }
+        else if(other.gameObject.tag == "bigPowerUp")
         {
+            audioLibrary.PlaySound("poison");
             player.transform.localScale = new Vector3(bigPowerUp, bigPowerUp, 0);
         }
 
         //Traps
         if (other.gameObject.tag == "traps")
         {
-            Health.lives--;
-           // damageEffects.TakeDamageEffect();
-   
-            if (Health.lives <= 0)
-            {
-                gameOver.IsGameOver();
-                gameObject.SetActive(true);
-            }
+            // damageEffects.TakeDamageEffect();
+         
+            healthScript.GetDamage();
         }
-
-      
-       /* //edges
-        if (other.CompareTag("Edge"))
-        {
-            gameOver.IsGameOver();
-        }*/
 
         //box
         if (other.CompareTag("box"))
@@ -131,17 +129,15 @@ public class OnTrigger : MonoBehaviour
             Destroy(heart);
         }
 
-
-        /*//ENEMIES
-        if (other.CompareTag("enemy"))
+        //edges
+        if (other.CompareTag("Edge"))
         {
-            Health.lives--;
-            if(Health.lives <= 0)
-            {
-                gameOver.IsGameOver();
-                gameObject.SetActive(true);
-            }
-        }*/
+           transform.position = new Vector3 (-15f, -2.78f, 1f);
+        }else if (other.CompareTag("Edge2"))
+        {
+            transform.position = new Vector3(152.7f, 5.23f, 1f);
+        }
+
     }
 
 

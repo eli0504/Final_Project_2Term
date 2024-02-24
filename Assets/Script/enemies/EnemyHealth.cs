@@ -42,7 +42,7 @@ public class EnemyHealth : MonoBehaviour
 
         anim.SetBool("isDead", true);
 
-      //  Destroy(gameObject);
+        Destroy(gameObject);
 
     }
 }

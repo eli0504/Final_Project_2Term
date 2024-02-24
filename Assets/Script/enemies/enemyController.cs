@@ -22,8 +22,8 @@ public class enemyController : MonoBehaviour
 
 
     private float distance;
-    private float chaseRadius = 5f;
-    private float attackRadius = 2f;
+    public float chaseRadius = 5f;
+    public float attackRadius = 2f;
     //attack
     private float lastAttackTime;
     public float attackCooldown = 1.0f;  // Tiempo de espera entre ataques
@@ -104,7 +104,6 @@ public class enemyController : MonoBehaviour
         anim.SetBool("run", true);
         LookAtPlayer();
         currentPoint = player;
-        
     }
 
     public void Attack()
@@ -113,7 +112,8 @@ public class enemyController : MonoBehaviour
         currentPoint = transform; //se queda en el sitio a atacar
         anim.SetBool("run", false);
         anim.SetTrigger("attack");
-        healthScript.GetDamage();
+        audioLibrary.PlaySound("enemy");
+        // healthScript.GetDamage();
     }
 
     private void LookAtPlayer()

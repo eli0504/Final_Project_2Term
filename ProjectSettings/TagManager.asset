@@ -25,6 +25,7 @@ TagManager:
   - goldKey
   - startLevel
   - finishLevel
+  - Edge2
   layers:
   - Default
   - TransparentFX

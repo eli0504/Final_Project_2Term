@@ -57,6 +57,7 @@ public class PlayerController : MonoBehaviour
                 {
                     rigidbody2D.velocity = Vector2.up * jumpSpeed;
                     anim.SetTrigger("jump");
+                    audioLibrary.PlaySound("jump");
                     jumpsMade++;
         
                 }
