@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class audioLibrary : MonoBehaviour
 {
-    public static AudioClip hurtSound, coinSound, enemySound, attackSound, poisonSound, gameOverSound;
+    public static AudioClip hurtSound, coinSound, enemySound, attackSound, poisonSound, gameOverSound, generalSound;
     static AudioSource audioSource;
 
     void Start()
     {
+        hurtSound = Resources.Load<AudioClip>("general");
         hurtSound = Resources.Load<AudioClip>("hurt");
         coinSound = Resources.Load<AudioClip>("coin");
         enemySound = Resources.Load<AudioClip>("enemy");
@@ -36,7 +37,13 @@ public class audioLibrary : MonoBehaviour
                 audioSource.PlayOneShot(attackSound);
                 break;
             case "poison":
-                audioSource.PlayOneShot(attackSound);
+                audioSource.PlayOneShot(poisonSound);
+                break;
+            case "gameOverSound":
+                audioSource.PlayOneShot(gameOverSound);
+                break;
+            case "general":
+                audioSource.PlayOneShot(generalSound);
                 break;
         }
     }

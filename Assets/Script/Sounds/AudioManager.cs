@@ -9,6 +9,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private Slider volumeSlider;
     public TextMeshProUGUI volumeTextUI;
 
+    private void Update()
+    {
+        audioLibrary.PlaySound("general");
+    }
 
     private void Start()
     {

@@ -18,8 +18,10 @@ public class GameOver : MonoBehaviour
     }
     public void IsGameOver()
     {
+     
         isGameOver = true;
         Time.timeScale = 0f; // Detener el tiempo
         gameOverPanel.SetActive(true);
+        audioLibrary.PlaySound("gameOverSound");
     }
 }
