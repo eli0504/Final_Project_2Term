@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
     private GameOver gameOver;
+    private Animator anim;
 
     public static int lives = 3;
     public int numberOfHearts;
@@ -16,6 +17,7 @@ public class Health : MonoBehaviour
     private void Start()
     {
         gameOver = GetComponent<GameOver>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     private void Update()
@@ -55,6 +57,8 @@ public class Health : MonoBehaviour
         {
             gameOver.IsGameOver();
             gameObject.SetActive(true);
+            anim.SetTrigger("isDead");
+            
         }
     }
 }

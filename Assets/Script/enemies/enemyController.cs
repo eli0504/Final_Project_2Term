@@ -109,14 +109,11 @@ public class enemyController : MonoBehaviour
 
     public void Attack()
     {
-        
         LookAtPlayer();
         currentPoint = transform; //se queda en el sitio a atacar
         anim.SetBool("run", false);
         anim.SetTrigger("attack");
         healthScript.GetDamage();
-
-
     }
 
     private void LookAtPlayer()

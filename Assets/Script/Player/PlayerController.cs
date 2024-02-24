@@ -9,8 +9,6 @@ public class PlayerController : MonoBehaviour
 {
     private GameOver gameOver;
 
-    public GameObject player;
-
     private Rigidbody2D rigidbody2D;
     private Animator anim;
     private SpriteRenderer sprite;
@@ -96,20 +94,6 @@ public class PlayerController : MonoBehaviour
 
 
     }
-
-    /*private void PlayerInBounds()
-    {
-        Vector2 pos = transform.position;
-        if (pos.x < -xRange)
-        {
-            transform.position = new Vector3(-xRange, pos.y);
-        }
-
-        if (pos.x > xRange)
-        {
-            transform.position = new Vector3(xRange, pos.y);
-        }
-    }*/
 
 
     private void RunAnim()
