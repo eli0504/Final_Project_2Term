@@ -23,6 +23,8 @@ TagManager:
   - Ground
   - enemy
   - goldKey
+  - startLevel
+  - finishLevel
   layers:
   - Default
   - TransparentFX

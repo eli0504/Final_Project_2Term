@@ -28,7 +28,9 @@ public class enemyController : MonoBehaviour
     private float lastAttackTime;
     public float attackCooldown = 1.0f;  // Tiempo de espera entre ataques
 
-    private float xMin = 0.3f, xMax = 10.3f;
+    public float minY; 
+    public float maxY; 
+
 
     private void Awake()
     {
@@ -47,7 +49,16 @@ public class enemyController : MonoBehaviour
 
     private void Update()
     {
-        EnemyLimits();
+        //clamp Y pos
+
+        Vector3 actualPos = transform.position;
+   
+        float newYPos = Mathf.Clamp(actualPos.y, minY, maxY);
+
+        transform.position = new Vector3(actualPos.x, newYPos, actualPos.z);
+
+
+        //Stats
         distance = Vector3.Distance(player.position, transform.position);
       
         if (distance > chaseRadius)
@@ -93,8 +104,6 @@ public class enemyController : MonoBehaviour
         anim.SetBool("run", true);
         LookAtPlayer();
         currentPoint = player;
-        //chasing
-        //transform.position = Vector3.MoveTowards(transform.position, player.position, speed * Time.deltaTime); //move the enemy to the player 
         
     }
 
@@ -105,7 +114,9 @@ public class enemyController : MonoBehaviour
         currentPoint = transform; //se queda en el sitio a atacar
         anim.SetBool("run", false);
         anim.SetTrigger("attack");
-        
+        healthScript.GetDamage();
+
+
     }
 
     private void LookAtPlayer()
@@ -121,13 +132,6 @@ public class enemyController : MonoBehaviour
             transform.rotation = Quaternion.identity;
         }
     }
-
-     private void EnemyLimits()
-     {
-        transform.position = new Vector3(Mathf.Clamp(transform.position.x, 0.3f, 10.3f), transform.position.y, 0);
-     }
-
-   
 
     //visual
     private void OnDrawGizmos()
