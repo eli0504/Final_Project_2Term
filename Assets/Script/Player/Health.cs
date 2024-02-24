@@ -55,7 +55,6 @@ public class Health : MonoBehaviour
         audioLibrary.PlaySound("hurt");
         if (lives <= 0)
         {
-            
             gameOver.IsGameOver();
             gameObject.SetActive(true);
             anim.SetTrigger("isDead");

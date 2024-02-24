@@ -16,6 +16,7 @@ public class checkPoint : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            audioLibrary.PlaySound("point");
             respawn.respawnoint = this.gameObject;
             checkPointCollider.enabled = false;//disable the last checkpoint
         }

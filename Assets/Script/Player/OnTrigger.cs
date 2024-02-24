@@ -79,11 +79,13 @@ public class OnTrigger : MonoBehaviour
         //keys
         if (other.gameObject.tag == "keys")
         {
+            audioLibrary.PlaySound("live");
             Destroy(other.gameObject); //the collectable dissapear 
             keysCounter++;
             keysCounterText.text = $"{keysCounter}";
         }else if((other.gameObject.tag == "goldKey"))
         {
+            audioLibrary.PlaySound("live");
             Destroy(other.gameObject); //the collectable dissapear 
             keysCounter++;
             keysCounterText.text = $"{keysCounter}";
@@ -125,6 +127,7 @@ public class OnTrigger : MonoBehaviour
         //live
         if (other.CompareTag("live"))
         {
+            audioLibrary.PlaySound("live");
             Health.lives++;
             Destroy(heart);
         }
@@ -140,7 +143,7 @@ public class OnTrigger : MonoBehaviour
 
     }
 
-
+    /*
     private void Update()
     {
         verticalInput = Input.GetAxis("Vertical");
@@ -158,5 +161,5 @@ public class OnTrigger : MonoBehaviour
             anim.SetBool("ladder", false);
         }
 
-    }
+    }*/
 }

@@ -13,6 +13,8 @@ public class UIManager : MonoBehaviour
     //panels
     [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject winPanel;
+    [SerializeField] private GameObject settingsPanel;
+    [SerializeField] private GameObject creditsPanel;
     //buttons
     [SerializeField] private Button settingsButton;
     [SerializeField] private Button creditsButton;
@@ -91,16 +93,32 @@ public class UIManager : MonoBehaviour
     {
         pausePanel.SetActive(false);
     }
+    //setings
+    public void ShowSettingsPanel()
+    {
+
+        settingsPanel.SetActive(true);
+
+    }
+    public void QuitSettingsPanel()
+    {
+        settingsPanel.SetActive(false);
+    }
+
+    //credits
+    public void ShowCreditsPanel()
+    {
+
+        creditsPanel.SetActive(true);
+
+    }
+    public void QuitCreditsPanel()
+    {
+        creditsPanel.SetActive(false);
+    }
 
     //SCENES
-    public void GotoCreditsScene()
-    {
-        SceneManager.LoadScene("Credits");
-    }
-    public void GotoSettingsScene()
-    {
-        SceneManager.LoadScene("Settings");
-    }
+
     public void GotoMainMenuScene()
     {
         SceneManager.LoadScene("MainMenu");

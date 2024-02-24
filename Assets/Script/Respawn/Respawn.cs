@@ -11,6 +11,7 @@ public class Respawn : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            audioLibrary.PlaySound("point");
             player.transform.position = respawnoint.transform.position;
         }
     }
