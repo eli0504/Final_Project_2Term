@@ -11,20 +11,15 @@ public class AudioManager : MonoBehaviour
 
     private void Start()
     {
-       /* if (!PlayerPrefs.HasKey("VolumeValue"))
+        if (!PlayerPrefs.HasKey("VolumeValue"))
         {
             PlayerPrefs.SetFloat("VolumeValue", 1);
         }
         else
         {
-           
-        }*/
-        LoadValues();
-    }
-
-    public void VolumeSlider(float volume)
-    {
-        volumeTextUI.text = volume.ToString("0.0");
+            LoadValues();
+        }
+   
     }
 
     public void ChangeSoundVolume()
@@ -35,15 +30,12 @@ public class AudioManager : MonoBehaviour
 
     public void SaveVolumeButton()
     {
-        float volumeValue = volumeSlider.value;
-        PlayerPrefs.SetFloat("VolumeValue", volumeValue);
+        PlayerPrefs.SetFloat("VolumeValue", volumeSlider.value);
         LoadValues();
     }
 
     public void LoadValues()
     {
-        float volumeValue = PlayerPrefs.GetFloat("VolumeValue");
-        volumeSlider.value = volumeValue;
-        AudioListener.volume = volumeValue;
+        volumeSlider.value = PlayerPrefs.GetFloat("VolumeValue");
     }
 }
