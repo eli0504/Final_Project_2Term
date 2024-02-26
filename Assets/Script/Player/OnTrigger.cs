@@ -32,6 +32,7 @@ public class OnTrigger : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Rigidbody2D rigidbody2D;
     private BoxCollider2D boxCollider;
+    public ParticleSystem boxParticles;
 
     private float verticalInput;
     private void Awake()
@@ -116,10 +117,13 @@ public class OnTrigger : MonoBehaviour
         {
             // Instancia el prefab en la posición del objeto trigger
             Instantiate(smallPotion, new Vector3(-6, -2, 0), Quaternion.identity);
+            boxParticles.Stop();
 
-        }else if (other.CompareTag("box2"))
+        }
+        else if (other.CompareTag("box2"))
         {
             Instantiate(bigPotion, new Vector3(12, -5, 0), Quaternion.identity);
+            boxParticles.Stop();
         }
 
         //live
