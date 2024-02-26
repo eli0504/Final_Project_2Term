@@ -15399,7 +15399,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1436100537
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21347,6 +21347,10 @@ PrefabInstance:
     - target: {fileID: 236480903229805895, guid: 795e1db7ff12abf418e5030bafcdf751, type: 3}
       propertyPath: m_Name
       value: PausePanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 236480903229805895, guid: 795e1db7ff12abf418e5030bafcdf751, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 249650436072455694, guid: 795e1db7ff12abf418e5030bafcdf751, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

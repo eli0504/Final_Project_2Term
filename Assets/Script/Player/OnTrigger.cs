@@ -131,7 +131,7 @@ public class OnTrigger : MonoBehaviour
         {
             audioLibrary.PlaySound("live");
             Health.lives++;
-            Destroy(heart);
+            Destroy(other.gameObject);
         }
 
         //edges
