@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
 
     //panels
     [SerializeField] private GameObject pausePanel;
-    [SerializeField] private GameObject winPanel;
+    //[SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject creditsPanel;
     //buttons
@@ -23,6 +23,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Button playButton;
     [SerializeField] private Button exitButton;
     [SerializeField] private Button backButton;
+    [SerializeField] private Button restartButton;
 
     private void Awake()
     {
@@ -139,5 +140,18 @@ public class UIManager : MonoBehaviour
     {
 
         SceneManager.LoadScene("Level2");
+    }
+
+    //Reset Game
+    public void ResetGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+        Time.timeScale = 1f;
+        Health.lives = 3;
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }

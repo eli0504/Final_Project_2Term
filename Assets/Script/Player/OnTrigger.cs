@@ -24,8 +24,6 @@ public class OnTrigger : MonoBehaviour
     private int coinsCounter;
     private int keysCounter;
 
-    public GameObject winPanel;
-
     private GameOver gameOver;
     private Health healthScript;
 
@@ -49,7 +47,7 @@ public class OnTrigger : MonoBehaviour
         damageEffects = GetComponent<DamageEffects>();
         gameOver = GetComponent<GameOver>();
         healthScript = GetComponent<Health>();
-        winPanel.SetActive(false);
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -90,7 +88,7 @@ public class OnTrigger : MonoBehaviour
             keysCounter++;
             keysCounterText.text = $"{keysCounter}";
             Time.timeScale = 0f;
-            winPanel.SetActive(true);
+           // winPanel.SetActive(true);
         }
 
         //smallPowerUp
