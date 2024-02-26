@@ -26,6 +26,7 @@ TagManager:
   - startLevel
   - finishLevel
   - Edge2
+  - CheckPoint2
   layers:
   - Default
   - TransparentFX

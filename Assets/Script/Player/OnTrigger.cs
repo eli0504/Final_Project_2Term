@@ -96,7 +96,8 @@ public class OnTrigger : MonoBehaviour
         if (other.gameObject.tag == "smallPowerUp")
         {
             audioLibrary.PlaySound("poison");
-            player.transform.localScale = new Vector3(smallPowerUp, smallPowerUp, 0);
+            // player.transform.localScale = new Vector3(smallPowerUp, smallPowerUp, 0);
+            transform.localScale = new Vector3(smallPowerUp, smallPowerUp, 0);
         }
         else if(other.gameObject.tag == "bigPowerUp")
         {

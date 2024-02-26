@@ -60,6 +60,7 @@ public class enemyController : MonoBehaviour
 
         //Stats
         distance = Vector3.Distance(player.position, transform.position);
+        Debug.Log(distance);
       
         if (distance > chaseRadius)
         {
@@ -67,6 +68,7 @@ public class enemyController : MonoBehaviour
         }
         else if(distance > attackRadius)
         {
+            Debug.Log("chasing");
             Chasing();   
         }
         else
