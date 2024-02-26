@@ -1226,8 +1226,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9d93f7f8c1f68a4c867c7903381fd9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pausePanel: {fileID: 0}
-  winPanel: {fileID: 0}
+  pausePanel: {fileID: 236480903229805895, guid: 795e1db7ff12abf418e5030bafcdf751, type: 3}
   settingsPanel: {fileID: 0}
   creditsPanel: {fileID: 0}
   settingsButton: {fileID: 0}
@@ -1237,6 +1236,7 @@ MonoBehaviour:
   playButton: {fileID: 695411927}
   exitButton: {fileID: 0}
   backButton: {fileID: 0}
+  restartButton: {fileID: 0}
 --- !u!82 &1013607900
 AudioSource:
   m_ObjectHideFlags: 0
