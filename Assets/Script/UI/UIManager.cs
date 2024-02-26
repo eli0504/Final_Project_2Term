@@ -35,7 +35,7 @@ public class UIManager : MonoBehaviour
 
         Instance = this;
 
-        /**resumeButton.onClick.AddListener(() =>
+        resumeButton.onClick.AddListener(() =>
         {
             Instance.ResumeGame();
         });
@@ -43,7 +43,7 @@ public class UIManager : MonoBehaviour
         {
             Time.timeScale = 1f;
 
-        });*/
+        });
 
         QuitPausePanel();
     }

@@ -143,25 +143,14 @@ public class OnTrigger : MonoBehaviour
             transform.position = new Vector3(152.7f, 5.23f, 1f);
         }
 
-    }
-
-    /*
-    private void Update()
-    {
-        verticalInput = Input.GetAxis("Vertical");
-    }
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        //stairs
-        if (other.CompareTag("stairs") && verticalInput > 0) // Verifica si el jugador está en las escaleras
+        //checkpoint
+        if (other.CompareTag("CheckPoint"))
         {
-            rigidbody2D.velocity = new Vector2(0, stairsSpeed * verticalInput);
-            anim.SetBool("ladder", true);
-        }
-        else
+            healthScript.GetDamage();
+        }else if (other.CompareTag("CheckPoint2"))
         {
-            anim.SetBool("ladder", false);
+            healthScript.GetDamage();
         }
 
-    }*/
+    }
 }
