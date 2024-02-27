@@ -5,9 +5,8 @@ using UnityEngine.UI;
 
 public class enemyController : MonoBehaviour
 {
-    private Health healthScript;
     private GameOver gameOver;
-
+    private Health healthScript;
     private Rigidbody2D rb;
     private Animator anim;
 
@@ -60,7 +59,6 @@ public class enemyController : MonoBehaviour
 
         //Stats
         distance = Vector3.Distance(player.position, transform.position);
-        Debug.Log(distance);
       
         if (distance > chaseRadius)
         {
@@ -68,7 +66,6 @@ public class enemyController : MonoBehaviour
         }
         else if(distance > attackRadius)
         {
-            Debug.Log("chasing");
             Chasing();   
         }
         else
@@ -115,7 +112,18 @@ public class enemyController : MonoBehaviour
         anim.SetBool("run", false);
         anim.SetTrigger("attack");
         audioLibrary.PlaySound("enemy");
-        // healthScript.GetDamage();
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            healthScript = GetComponent<Health>();
+            if (healthScript != null)
+            {
+                healthScript.GetDamage();
+            }
+        }
     }
 
     private void LookAtPlayer()

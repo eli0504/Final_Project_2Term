@@ -57,7 +57,7 @@ public class Health : MonoBehaviour
         {
             gameOver.IsGameOver();
             gameObject.SetActive(true);
-            anim.SetTrigger("isDead");
+            anim.SetBool("isDead", true);
             
         }
     }

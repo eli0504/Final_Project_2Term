@@ -7,7 +7,7 @@ using TMPro;
 
 public class OnTrigger : MonoBehaviour
 {
-    private DamageEffects damageEffects;
+    private Postprocessing postprocessing;
     private PlayerDataPersistence playerDataPersistence;
     public TextMeshProUGUI coinsCounterText;
     public TextMeshProUGUI keysCounterText;
@@ -45,7 +45,7 @@ public class OnTrigger : MonoBehaviour
     private void Start()
     {
         playerDataPersistence = GetComponent<PlayerDataPersistence>();
-        damageEffects = GetComponent<DamageEffects>();
+        postprocessing = GetComponent<Postprocessing>();
         gameOver = GetComponent<GameOver>();
         healthScript = GetComponent<Health>();
         
@@ -96,13 +96,12 @@ public class OnTrigger : MonoBehaviour
         if (other.gameObject.tag == "smallPowerUp")
         {
             audioLibrary.PlaySound("poison");
-            // player.transform.localScale = new Vector3(smallPowerUp, smallPowerUp, 0);
             transform.localScale = new Vector3(smallPowerUp, smallPowerUp, 0);
         }
         else if(other.gameObject.tag == "bigPowerUp")
         {
             audioLibrary.PlaySound("poison");
-            player.transform.localScale = new Vector3(bigPowerUp, bigPowerUp, 0);
+            transform.localScale = new Vector3(bigPowerUp, bigPowerUp, 0);
         }
 
         //Traps
@@ -143,15 +142,16 @@ public class OnTrigger : MonoBehaviour
         {
             transform.position = new Vector3(152.7f, 5.23f, 1f);
         }
-
+        
+        /*
         //checkpoint
         if (other.CompareTag("CheckPoint"))
         {
             healthScript.GetDamage();
-        }else if (other.CompareTag("CheckPoint2"))
-        {
-            healthScript.GetDamage();
         }
+        */
+
+        
 
     }
 }
