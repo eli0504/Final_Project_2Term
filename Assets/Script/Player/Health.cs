@@ -49,6 +49,11 @@ public class Health : MonoBehaviour
         }
     }
 
+    public int GetLives()
+    {
+        return lives;
+    }
+
     public void GetDamage()
     {
         lives--;

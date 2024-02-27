@@ -48,7 +48,7 @@ public class OnTrigger : MonoBehaviour
         postprocessing = GetComponent<Postprocessing>();
         gameOver = GetComponent<GameOver>();
         healthScript = GetComponent<Health>();
-        
+
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -56,9 +56,9 @@ public class OnTrigger : MonoBehaviour
         //pass to level2
         if (other.gameObject.tag == "PassLevel")
         {
-        
+
             SceneManager.LoadScene("Level2");
-    
+
         }
         else if (other.gameObject.tag == "FinalBoss")
         {
@@ -82,14 +82,14 @@ public class OnTrigger : MonoBehaviour
             Destroy(other.gameObject); //the collectable dissapear 
             keysCounter++;
             keysCounterText.text = $"{keysCounter}";
-        }else if((other.gameObject.tag == "goldKey"))
+        } else if ((other.gameObject.tag == "goldKey"))
         {
             audioLibrary.PlaySound("live");
             Destroy(other.gameObject); //the collectable dissapear 
             keysCounter++;
             keysCounterText.text = $"{keysCounter}";
             Time.timeScale = 0f;
-           // winPanel.SetActive(true);
+            // winPanel.SetActive(true);
         }
 
         //smallPowerUp
@@ -98,7 +98,7 @@ public class OnTrigger : MonoBehaviour
             audioLibrary.PlaySound("poison");
             transform.localScale = new Vector3(smallPowerUp, smallPowerUp, 0);
         }
-        else if(other.gameObject.tag == "bigPowerUp")
+        else if (other.gameObject.tag == "bigPowerUp")
         {
             audioLibrary.PlaySound("poison");
             transform.localScale = new Vector3(bigPowerUp, bigPowerUp, 0);
@@ -108,7 +108,7 @@ public class OnTrigger : MonoBehaviour
         if (other.gameObject.tag == "traps")
         {
             // damageEffects.TakeDamageEffect();
-         
+
             healthScript.GetDamage();
         }
 
@@ -137,21 +137,20 @@ public class OnTrigger : MonoBehaviour
         //edges
         if (other.CompareTag("Edge"))
         {
-           transform.position = new Vector3 (-15f, -2.78f, 1f);
-        }else if (other.CompareTag("Edge2"))
+            transform.position = new Vector3(-15f, -2.78f, 1f);
+        } else if (other.CompareTag("Edge2"))
         {
             transform.position = new Vector3(152.7f, 5.23f, 1f);
         }
-        
-        /*
-        //checkpoint
-        if (other.CompareTag("CheckPoint"))
+
+        if (other.tag == "enemy")
         {
-            healthScript.GetDamage();
+            healthScript = GetComponent<Health>();
+            if (healthScript != null)
+            {
+                healthScript.GetDamage();
+            }
         }
-        */
-
-        
-
     }
 }
+       

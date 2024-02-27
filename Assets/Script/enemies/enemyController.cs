@@ -16,7 +16,6 @@ public class enemyController : MonoBehaviour
     private Transform currentPoint;
     public float speed = 5;
 
-
     public Transform player;//player pos
 
 
@@ -58,7 +57,7 @@ public class enemyController : MonoBehaviour
 
 
         //Stats
-        distance = Vector3.Distance(player.position, transform.position);
+        float distance = Vector3.Distance(player.position, transform.position);
       
         if (distance > chaseRadius)
         {
@@ -73,7 +72,7 @@ public class enemyController : MonoBehaviour
             Attack();  // Si el jugador está dentro del rango de ataque, ataca.
         }
         transform.position = Vector3.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
-        
+  
     }
 
     public void Patrol()
@@ -114,7 +113,7 @@ public class enemyController : MonoBehaviour
         audioLibrary.PlaySound("enemy");
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+  /*  private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.tag == "Player")
         {
@@ -124,7 +123,7 @@ public class enemyController : MonoBehaviour
                 healthScript.GetDamage();
             }
         }
-    }
+    }*/
 
     private void LookAtPlayer()
     {
