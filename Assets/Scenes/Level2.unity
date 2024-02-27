@@ -42005,7 +42005,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 886396425733538118, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 886396425733538118, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_TagString
@@ -42069,15 +42069,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5621844503857969146, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_Size.x
-      value: 0.2693271
+      value: 0.49833554
       objectReference: {fileID: 0}
     - target: {fileID: 5621844503857969146, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_Offset.x
-      value: 0.000661321
+      value: 0.008048065
       objectReference: {fileID: 0}
     - target: {fileID: 5621844503857969146, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 99861101974773909, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
@@ -43174,6 +43174,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4882325632003236384, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 1.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6505458228563365756, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
       propertyPath: hearts.Array.data[0]
       value: 
@@ -44126,7 +44130,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 886396425733538118, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 886396425733538118, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_TagString
@@ -44190,15 +44194,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5621844503857969146, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_Size.x
-      value: 0.2693271
+      value: 0.46416348
       objectReference: {fileID: 0}
     - target: {fileID: 5621844503857969146, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_Offset.x
-      value: 0.000661321
+      value: -0.007934563
       objectReference: {fileID: 0}
     - target: {fileID: 5621844503857969146, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 99861101974773909, guid: 06e875f18ebc01f4c976eb464ab96045, type: 3}
