@@ -118,7 +118,6 @@ public class OnTrigger : MonoBehaviour
         //Traps
         if (other.gameObject.tag == "traps")
         {
-            // damageEffects.TakeDamageEffect();
 
             healthScript.GetDamage();
         }
@@ -133,7 +132,7 @@ public class OnTrigger : MonoBehaviour
         }
         else if (other.CompareTag("box2"))
         {
-            Instantiate(bigPotion, new Vector3(12, -5, 0), Quaternion.identity);
+            Instantiate(bigPotion, new Vector3(44.85f, -1.55f, 0), Quaternion.identity);
             boxParticles.Stop();
         }
 

@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class enemyController : MonoBehaviour
 {
-    private Postprocessing postprocessing;
+    
     private GameOver gameOver;
     private Health healthScript;
     private Rigidbody2D rb;
@@ -39,7 +39,7 @@ public class enemyController : MonoBehaviour
     }
     private void Start()
     {
-        postprocessing = GetComponent<Postprocessing>();
+       
         healthScript = GetComponent<Health>();
         gameOver = GetComponent<GameOver>();
 
