@@ -115,11 +115,18 @@ public class OnTrigger : MonoBehaviour
             transform.localScale = new Vector3(bigPowerUp, bigPowerUp, 0);
         }
 
-        //Traps
-        if (other.gameObject.tag == "traps")
+        
+        if (other.gameObject.tag == "traps" || other.gameObject.tag == "enemy")
         {
+          
+            healthScript = GetComponent<Health>();
 
-            healthScript.GetDamage();
+            if (healthScript != null)
+            {
+                StartCoroutine(Desactive()); //LLAMAR CORRUTINA
+                healthScript.GetDamage();
+
+            }
         }
 
         //box
@@ -152,7 +159,7 @@ public class OnTrigger : MonoBehaviour
         {
             transform.position = new Vector3(152.7f, 5.23f, 1f);
         }
-
+        /*
         //enemies
         if (other.tag == "enemy")
         {
@@ -165,7 +172,7 @@ public class OnTrigger : MonoBehaviour
 
             }
         }
-
+        */
     }
     public IEnumerator Desactive() //corrutina para cambiar color y desactivar viñeta
     {
