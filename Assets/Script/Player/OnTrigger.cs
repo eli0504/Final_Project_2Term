@@ -143,14 +143,23 @@ public class OnTrigger : MonoBehaviour
             transform.position = new Vector3(152.7f, 5.23f, 1f);
         }
 
+        //enemies
         if (other.tag == "enemy")
+
         {
+
             healthScript = GetComponent<Health>();
+
             if (healthScript != null)
+
             {
+
                 healthScript.GetDamage();
+
             }
+
         }
+
     }
 }
        
