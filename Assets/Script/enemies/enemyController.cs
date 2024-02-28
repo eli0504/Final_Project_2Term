@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class enemyController : MonoBehaviour
 {
+    private Postprocessing postprocessing;
     private GameOver gameOver;
     private Health healthScript;
     private Rigidbody2D rb;
@@ -38,6 +39,7 @@ public class enemyController : MonoBehaviour
     }
     private void Start()
     {
+        postprocessing = GetComponent<Postprocessing>();
         healthScript = GetComponent<Health>();
         gameOver = GetComponent<GameOver>();
 
@@ -69,7 +71,9 @@ public class enemyController : MonoBehaviour
         }
         else
         {
+
             Attack();  // Si el jugador está dentro del rango de ataque, ataca.
+            
         }
         transform.position = Vector3.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
   
@@ -106,24 +110,13 @@ public class enemyController : MonoBehaviour
 
     public void Attack()
     {
+        
         LookAtPlayer();
         currentPoint = transform; //se queda en el sitio a atacar
         anim.SetBool("run", false);
         anim.SetTrigger("attack");
         audioLibrary.PlaySound("enemy");
     }
-
-  /*  private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.tag == "Player")
-        {
-            healthScript = GetComponent<Health>();
-            if (healthScript != null)
-            {
-                healthScript.GetDamage();
-            }
-        }
-    }*/
 
     private void LookAtPlayer()
     {

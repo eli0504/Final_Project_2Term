@@ -4,10 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class OnTrigger : MonoBehaviour
 {
-    private Postprocessing postprocessing;
+   
     private PlayerDataPersistence playerDataPersistence;
     public TextMeshProUGUI coinsCounterText;
     public TextMeshProUGUI keysCounterText;
@@ -16,6 +18,9 @@ public class OnTrigger : MonoBehaviour
     public GameObject bigPotion;
     public GameObject smallPotion;
     public GameObject heart;
+
+    public Volume volume;
+    private Vignette vignette;
 
     public float speed = 25f;
     public float stairsSpeed = 5f;
@@ -37,6 +42,7 @@ public class OnTrigger : MonoBehaviour
     private float verticalInput;
     private void Awake()
     {
+        volume = GetComponent<Volume>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         rigidbody2D = GetComponentInChildren<Rigidbody2D>();
         anim = GetComponentInChildren<Animator>();
@@ -44,8 +50,13 @@ public class OnTrigger : MonoBehaviour
     }
     private void Start()
     {
+        volume.profile.TryGet(out vignette); //encontrar y enchufar la viñeta
+
+        vignette.intensity.value = 0.5f;
+        vignette.color.value = Color.red;
+
         playerDataPersistence = GetComponent<PlayerDataPersistence>();
-        postprocessing = GetComponent<Postprocessing>();
+        
         gameOver = GetComponent<GameOver>();
         healthScript = GetComponent<Health>();
 
@@ -145,21 +156,26 @@ public class OnTrigger : MonoBehaviour
 
         //enemies
         if (other.tag == "enemy")
-
         {
-
             healthScript = GetComponent<Health>();
-
+           
             if (healthScript != null)
-
             {
-
+                StartCoroutine(Desactive()); //LLAMAR CORRUTINA
                 healthScript.GetDamage();
 
             }
-
         }
 
+    }
+    public IEnumerator Desactive() //corrutina para cambiar color y desactivar viñeta
+    {
+        yield return new WaitForSeconds(0.1f);
+        vignette.intensity.value = 1f;
+        vignette.color.value = Color.red;
+
+        yield return new WaitForSeconds(0.5f);
+        vignette.active = false;
     }
 }
        
