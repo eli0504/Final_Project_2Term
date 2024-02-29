@@ -8701,6 +8701,10 @@ PrefabInstance:
       propertyPath: m_LocalPosition.x
       value: 1.1
       objectReference: {fileID: 0}
+    - target: {fileID: 6234366563146330099, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6505458228563365756, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
       propertyPath: hearts.Array.data[0]
       value: 
@@ -8716,6 +8720,10 @@ PrefabInstance:
     - target: {fileID: 7190627795542064649, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
       propertyPath: m_Name
       value: PlayerEmpty
+      objectReference: {fileID: 0}
+    - target: {fileID: 7190627795542064649, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7190627795542064649, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
       propertyPath: m_TagString
@@ -8741,6 +8749,10 @@ PrefabInstance:
       propertyPath: coinsCounterText
       value: 
       objectReference: {fileID: 1009508465}
+    - target: {fileID: 8628668564984458613, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -20431,9 +20443,10 @@ GameObject:
   m_Component:
   - component: {fileID: 2040970416}
   - component: {fileID: 2040970418}
+  - component: {fileID: 2040970419}
   m_Layer: 0
   m_Name: PassLevel
-  m_TagString: startLevel
+  m_TagString: Untagged
   m_Icon: {fileID: -1412012063857583412, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -20498,6 +20511,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.0991573, y: 4.0242076}
   m_EdgeRadius: 0
+--- !u!114 &2040970419
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2040970414}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07251650e0b2e5f46ac4a9e311367af8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2059473007
 GameObject:
   m_ObjectHideFlags: 0

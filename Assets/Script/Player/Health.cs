@@ -16,6 +16,8 @@ public class Health : MonoBehaviour
 
     private void Start()
     {
+       // numberOfHearts = lives;
+
         gameOver = GetComponent<GameOver>();
         anim = GetComponentInChildren<Animator>();
     }

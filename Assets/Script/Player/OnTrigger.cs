@@ -64,18 +64,15 @@ public class OnTrigger : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        //pass to level2
+        /*//pass to level2
         if (other.gameObject.tag == "PassLevel")
         {
 
-            SceneManager.LoadScene("Level2");
+            gameManager.SaveData();
+            gameManager.LoadNextLevel();
 
-        }
-        else if (other.gameObject.tag == "FinalBoss")
-        {
-            SceneManager.LoadScene("FinalBoss");
-            Debug.Log("finalBoss");
-        }
+        }*/
+       
 
         //coins
         if (other.gameObject.tag == "coins")

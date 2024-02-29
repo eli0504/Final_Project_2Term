@@ -7,7 +7,6 @@ public class PlayerPref : MonoBehaviour
 {
     public TMP_InputField _InputField;
 
-
     public void SaveData()
     {
         PlayerPrefs.SetString("Input", _InputField.text);
@@ -24,3 +23,4 @@ public class PlayerPref : MonoBehaviour
     }
 
 }
+
