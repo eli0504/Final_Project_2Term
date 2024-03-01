@@ -1026,6 +1026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealthKey: PlayerHealth
+  coinsKey: coins
   sceneKey: SceneIndex
   savePresentKey: SavePresent
   OnDataLoadedResult:

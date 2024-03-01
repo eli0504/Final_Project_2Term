@@ -1102,7 +1102,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 727496363}
-  volumeTextUI: {fileID: 0}
 --- !u!82 &412670919
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1931,7 +1930,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volumeSlider: {fileID: 727496363}
-  volumeTextUI: {fileID: 0}
 --- !u!1 &758678544
 GameObject:
   m_ObjectHideFlags: 0
@@ -2441,8 +2439,6 @@ GameObject:
   - component: {fileID: 968537684}
   - component: {fileID: 968537683}
   - component: {fileID: 968537682}
-  - component: {fileID: 968537681}
-  - component: {fileID: 968537685}
   - component: {fileID: 968537686}
   m_Layer: 5
   m_Name: Canvas
@@ -2451,23 +2447,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &968537681
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968537680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
-  m_BlockingObjects: 0
-  m_BlockingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
 --- !u!114 &968537682
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2541,18 +2520,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
---- !u!114 &968537685
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 968537680}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c6fc45af4d2247408b7a2b1283b35c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &968537686
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2566,6 +2533,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pausePanel: {fileID: 2071874400}
+  winPanel: {fileID: 0}
   settingsPanel: {fileID: 2086523263}
   creditsPanel: {fileID: 1618676008}
   settingsButton: {fileID: 1440730477}
@@ -4386,6 +4354,38 @@ PrefabInstance:
       propertyPath: m_Name
       value: PausePanel 1
       objectReference: {fileID: 0}
+    - target: {fileID: 249650436072455694, guid: 795e1db7ff12abf418e5030bafcdf751, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 968537686}
+    - target: {fileID: 249650436072455694, guid: 795e1db7ff12abf418e5030bafcdf751, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResumeGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 403833196215560932, guid: 795e1db7ff12abf418e5030bafcdf751, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 968537686}
+    - target: {fileID: 403833196215560932, guid: 795e1db7ff12abf418e5030bafcdf751, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GotoMainMenuScene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4684776182609946181, guid: 795e1db7ff12abf418e5030bafcdf751, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 968537686}
+    - target: {fileID: 4684776182609946181, guid: 795e1db7ff12abf418e5030bafcdf751, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowCreditsPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 5497418544935990745, guid: 795e1db7ff12abf418e5030bafcdf751, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 968537686}
+    - target: {fileID: 5497418544935990745, guid: 795e1db7ff12abf418e5030bafcdf751, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ShowSettingsPanel
+      objectReference: {fileID: 0}
     - target: {fileID: 5760374308953454211, guid: 795e1db7ff12abf418e5030bafcdf751, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -4738,5 +4738,5 @@ SceneRoots:
   m_Roots:
   - {fileID: 1833335807}
   - {fileID: 968537684}
-  - {fileID: 1934378111}
   - {fileID: 412670921}
+  - {fileID: 1934378111}

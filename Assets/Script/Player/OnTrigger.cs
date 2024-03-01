@@ -18,17 +18,18 @@ public class OnTrigger : MonoBehaviour
     public GameObject bigPotion;
     public GameObject smallPotion;
     public GameObject heart;
+    public GameObject finalKey;
+    public GameObject winPanel;
 
     public Volume volume;
     private Vignette vignette;
 
     public ParticleSystem boxParticles;
-
     public float speed = 25f;
     public float stairsSpeed = 5f;
     private float smallPowerUp = 0.3f;
     private float bigPowerUp = 1f;
-    private int coinsCounter;
+    public int coinsCounter;
     private int keysCounter;
    
     private void Awake()
@@ -71,7 +72,7 @@ public class OnTrigger : MonoBehaviour
             keysCounter++;
             keysCounterText.text = $"{keysCounter}";
             Time.timeScale = 0f;
-            // winPanel.SetActive(true);
+            winPanel.SetActive(true);
         }
 
         //PowerUp
@@ -126,8 +127,12 @@ public class OnTrigger : MonoBehaviour
         {
             transform.position = new Vector3(152.7f, 5.23f, 1f);
         }
-        
 
+        //finish level 
+        if (other.CompareTag("finishLevel"))
+        {
+            Instantiate(finalKey, new Vector3(152.5f, 10, 0), Quaternion.identity);
+        }
     }
 
     //coroutine to change color and disable vignette

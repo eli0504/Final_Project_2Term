@@ -17,8 +17,8 @@ public class nextLevel : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            gameManager.SaveData();
             gameManager.LoadNextLevel();
+            gameManager.SaveData();
         }
     }
 }
