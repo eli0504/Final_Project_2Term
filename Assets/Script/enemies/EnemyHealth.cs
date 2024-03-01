@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth = 100;
     private float currentHealth;
 
-    public float damageValue = 30f; //damage from the player
+    public float damageValue = 20f; //damage from the player
 
 
     private void Start()
