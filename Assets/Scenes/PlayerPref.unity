@@ -429,8 +429,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30dfaccb974fbb04ea6de62c164ac8c5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
-  saveSystem: {fileID: 0}
+  player: {fileID: 7190627795542064649, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
+  saveSystem: {fileID: 833278833}
 --- !u!114 &695411927 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7340398225741724446, guid: 7d4bac631e6840343937e8debeafb052, type: 3}
@@ -1028,6 +1028,9 @@ MonoBehaviour:
   playerHealthKey: PlayerHealth
   sceneKey: SceneIndex
   savePresentKey: SavePresent
+  OnDataLoadedResult:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &833278834
 Transform:
   m_ObjectHideFlags: 0

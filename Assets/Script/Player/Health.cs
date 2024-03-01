@@ -10,14 +10,13 @@ public class Health : MonoBehaviour
     public static int lives = 3;
     public int numberOfHearts;
 
+    //visual lives
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
     private void Start()
     {
-       // numberOfHearts = lives;
-
         gameOver = GetComponent<GameOver>();
         anim = GetComponentInChildren<Animator>();
     }
@@ -56,6 +55,7 @@ public class Health : MonoBehaviour
         return lives;
     }
 
+    //When the player takes damage, their lives are subtracted
     public void GetDamage()
     {
         lives--;
@@ -64,8 +64,7 @@ public class Health : MonoBehaviour
         {
             gameOver.IsGameOver();
             gameObject.SetActive(true);
-            anim.SetBool("isDead", true);
-            
+            anim.SetBool("isDead", true);   
         }
     }
 }

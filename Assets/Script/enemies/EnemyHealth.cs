@@ -10,7 +10,7 @@ public class EnemyHealth : MonoBehaviour
     public int maxHealth = 100;
     private float currentHealth;
 
-    public float damageValue = 20f; //damage from th player
+    public float damageValue = 20f; //damage from the player
 
 
     private void Start()
@@ -23,9 +23,9 @@ public class EnemyHealth : MonoBehaviour
 
     public void TakeDamage()
     {
-        // Reduzca la salud del enemigo cuando recibe daño
+        // Reduce enemy health when taking damage
         currentHealth -= damageValue;
-        // Asegúrate de que la salud no sea menor que cero
+        // Make sure health is not less than zero
         currentHealth = Mathf.Max(currentHealth, 0f);
         anim.SetTrigger("hurt");
 
@@ -40,6 +40,5 @@ public class EnemyHealth : MonoBehaviour
     {
         anim.SetBool("isDead", true);
         Destroy(gameObject);
-
     }
 }

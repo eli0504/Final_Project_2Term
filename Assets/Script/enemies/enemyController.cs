@@ -8,25 +8,25 @@ public class enemyController : MonoBehaviour
     
     private GameOver gameOver;
     private Health healthScript;
+
     private Rigidbody2D rb;
     private Animator anim;
 
     public Transform pointA;
     public Transform pointB;
-
     private Transform currentPoint;
+    public Transform player;
+
     public float speed = 5;
-
-    public Transform player;//player pos
-
-
     private float distance;
+
     public float chaseRadius = 5f;
     public float attackRadius = 2f;
-    //attack
+    
     private float lastAttackTime;
-    public float attackCooldown = 1.0f;  // Tiempo de espera entre ataques
+    public float attackCooldown = 1.0f;  // Waiting time between attacks
 
+    //clamp
     public float minY; 
     public float maxY; 
 
@@ -39,11 +39,11 @@ public class enemyController : MonoBehaviour
     }
     private void Start()
     {
-       
         healthScript = GetComponent<Health>();
         gameOver = GetComponent<GameOver>();
 
         currentPoint = pointB; //initial start point
+
         anim.SetBool("run", true);
     }
 
@@ -72,20 +72,20 @@ public class enemyController : MonoBehaviour
         else
         {
 
-            Attack();  // Si el jugador está dentro del rango de ataque, ataca.
+            Attack();  
             
         }
         transform.position = Vector3.MoveTowards(transform.position, currentPoint.position, speed * Time.deltaTime);
   
     }
 
+    //The enemy will go from one point to another to patrol
     public void Patrol()
     {
         anim.SetBool("run", true);
         //if enemy reach the current point
         if (Vector2.Distance(transform.position, currentPoint.position) < 2f && currentPoint == pointB)
         {
-             
             currentPoint = pointA;
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
@@ -101,6 +101,7 @@ public class enemyController : MonoBehaviour
         }
     }
 
+    //When the player approaches the enemy, enemy will chase him
     private void Chasing()
     {
         anim.SetBool("run", true);
@@ -108,11 +109,11 @@ public class enemyController : MonoBehaviour
         currentPoint = player;
     }
 
+    //When the player enters the enemy's attack range, enemy will attack player
     public void Attack()
     {
-        
         LookAtPlayer();
-        currentPoint = transform; //se queda en el sitio a atacar
+        currentPoint = transform; //stays in the place to attack
         anim.SetBool("run", false);
         anim.SetTrigger("attack");
         audioLibrary.PlaySound("enemy");

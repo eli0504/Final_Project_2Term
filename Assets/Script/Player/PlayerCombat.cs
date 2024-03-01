@@ -36,6 +36,7 @@ public class PlayerCombat : MonoBehaviour
     {
         anim.SetTrigger("attack");
         audioLibrary.PlaySound("attack");
+
         //detect enemies in range of attack with a circle
         Collider2D[] hitEnemies =  Physics2D.OverlapCircleAll(attackPoint.position, attackRange, enemyLayers);
 
@@ -51,6 +52,7 @@ public class PlayerCombat : MonoBehaviour
           
     }
 
+    //visual
     private void OnDrawGizmosSelected()
     {
         if(attackPoint == null)

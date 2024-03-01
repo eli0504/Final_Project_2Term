@@ -9,8 +9,8 @@ using UnityEngine.Rendering.Universal;
 
 public class OnTrigger : MonoBehaviour
 {
-   
-    private PlayerDataPersistence playerDataPersistence;
+    private Health healthScript;
+
     public TextMeshProUGUI coinsCounterText;
     public TextMeshProUGUI keysCounterText;
 
@@ -22,44 +22,27 @@ public class OnTrigger : MonoBehaviour
     public Volume volume;
     private Vignette vignette;
 
+    public ParticleSystem boxParticles;
+
     public float speed = 25f;
     public float stairsSpeed = 5f;
     private float smallPowerUp = 0.3f;
     private float bigPowerUp = 1f;
     private int coinsCounter;
     private int keysCounter;
-
-    private GameOver gameOver;
-    private Health healthScript;
-
-    private Animator anim;
-
-    private SpriteRenderer spriteRenderer;
-    private Rigidbody2D rigidbody2D;
-    private BoxCollider2D boxCollider;
-    public ParticleSystem boxParticles;
-
-    private float verticalInput;
+   
     private void Awake()
     {
         volume = GetComponent<Volume>();
-        spriteRenderer = GetComponentInChildren<SpriteRenderer>();
-        rigidbody2D = GetComponentInChildren<Rigidbody2D>();
-        anim = GetComponentInChildren<Animator>();
-        boxCollider = GetComponentInChildren<BoxCollider2D>();
     }
     private void Start()
     {
-        volume.profile.TryGet(out vignette); //encontrar y enchufar la viñeta
+        volume.profile.TryGet(out vignette); //find and plug the vignette
 
         vignette.intensity.value = 0.5f;
         vignette.color.value = Color.red;
-
-        playerDataPersistence = GetComponent<PlayerDataPersistence>();
         
-        gameOver = GetComponent<GameOver>();
         healthScript = GetComponent<Health>();
-
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -77,20 +60,21 @@ public class OnTrigger : MonoBehaviour
         if (other.gameObject.tag == "keys")
         {
             audioLibrary.PlaySound("live");
-            Destroy(other.gameObject); //the collectable dissapear 
+            Destroy(other.gameObject);
             keysCounter++;
             keysCounterText.text = $"{keysCounter}";
+
         } else if ((other.gameObject.tag == "goldKey"))
         {
             audioLibrary.PlaySound("live");
-            Destroy(other.gameObject); //the collectable dissapear 
+            Destroy(other.gameObject); 
             keysCounter++;
             keysCounterText.text = $"{keysCounter}";
             Time.timeScale = 0f;
             // winPanel.SetActive(true);
         }
 
-        //smallPowerUp
+        //PowerUp
         if (other.gameObject.tag == "smallPowerUp")
         {
             audioLibrary.PlaySound("poison");
@@ -102,27 +86,23 @@ public class OnTrigger : MonoBehaviour
             transform.localScale = new Vector3(bigPowerUp, bigPowerUp, 0);
         }
 
-        
+        //enemies and traps
         if (other.gameObject.tag == "traps" || other.gameObject.tag == "enemy")
         {
-          
             healthScript = GetComponent<Health>();
 
             if (healthScript != null)
             {
-                StartCoroutine(Desactive()); //LLAMAR CORRUTINA
+                StartCoroutine(Desactive()); //The red vignette appears when the player takes damage.
                 healthScript.GetDamage();
-
             }
         }
 
         //box
         if (other.CompareTag("box"))
         {
-            // Instancia el prefab en la posición del objeto trigger
             Instantiate(smallPotion, new Vector3(-6, -2, 0), Quaternion.identity);
             boxParticles.Stop();
-
         }
         else if (other.CompareTag("box2"))
         {
@@ -146,22 +126,12 @@ public class OnTrigger : MonoBehaviour
         {
             transform.position = new Vector3(152.7f, 5.23f, 1f);
         }
-        /*
-        //enemies
-        if (other.tag == "enemy")
-        {
-            healthScript = GetComponent<Health>();
-           
-            if (healthScript != null)
-            {
-                StartCoroutine(Desactive()); //LLAMAR CORRUTINA
-                healthScript.GetDamage();
+        
 
-            }
-        }
-        */
     }
-    public IEnumerator Desactive() //corrutina para cambiar color y desactivar viñeta
+
+    //coroutine to change color and disable vignette
+    public IEnumerator Desactive() 
     {
         yield return new WaitForSeconds(0.1f);
         vignette.intensity.value = 1f;

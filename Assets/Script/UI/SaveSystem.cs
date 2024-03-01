@@ -18,7 +18,7 @@ public class SaveSystem : MonoBehaviour
     private void Start()
     {
         var result = LoadData();
-       // OnDataLoadedResult?.Invoke(result); //called if the result of the LoadedData is true or false (continue button -> if there'sno data, the button )
+        OnDataLoadedResult?.Invoke(result); //called if the result of the LoadedData is true or false (continue button -> if there'sno data, the button )
 
     }
 
