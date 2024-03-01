@@ -18,22 +18,26 @@ public class GameManager : MonoBehaviour
     private void Initialize(Scene scene, LoadSceneMode sceneMode)
     {
         Debug.Log("Loaded");
+
         var playerController = FindObjectOfType<PlayerController>();
+
         if (playerController != null)
         {
             player = playerController.gameObject;
+
             saveSystem = FindObjectOfType<SaveSystem>();
+
             if (player != null && saveSystem.loadedData != null)
             {
                 var damagable = player.GetComponent<Health>();
-                damagable.numberOfHearts = saveSystem.loadedData.playerHealth;
+                damagable.numberOfHearts = saveSystem.loadedData.playerHealth; //Updates the player's number of hearts with the loaded value
             }
         }
     }
 
+    //If there is data loaded, load the stored scene
     public void LoadLevel()
     {
-       
         if (saveSystem.loadedData != null)
         {
             SceneManager.LoadScene(saveSystem.loadedData.sceneIndex); //load the scene with the stored index

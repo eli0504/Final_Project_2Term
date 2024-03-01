@@ -21,6 +21,5 @@ public class PlayerPref : MonoBehaviour
     {
         PlayerPrefs.DeleteKey("Input");
     }
-
 }
 

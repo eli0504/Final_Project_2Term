@@ -34,17 +34,7 @@ public class UIManager : MonoBehaviour
         }
 
         Instance = this;
-
-      /*  resumeButton.onClick.AddListener(() =>
-        {
-            Instance.ResumeGame();
-        });
-        mainMenuButton.onClick.AddListener(() =>
-        {
-            Time.timeScale = 1f;
-
-        });
-      */
+      
         QuitPausePanel();
     }
 
@@ -132,7 +122,6 @@ public class UIManager : MonoBehaviour
 
     public void GotoLevelOneScene()
     {
-
         SceneManager.LoadScene("Level1");
     }
 
@@ -142,7 +131,6 @@ public class UIManager : MonoBehaviour
         SceneManager.LoadScene("Level2");
     }
 
-    //Reset Game
     public void ResetGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);

@@ -4,23 +4,15 @@ using UnityEngine;
 
 public class GameOver : MonoBehaviour
 {
-    private PlayerController playerController;
-
-    private float gameTime = 0f;
-    private bool isGameOver = false;
     public GameObject gameOverPanel;
 
-    // Start is called before the first frame update
     void Start()
     {
-        playerController = GetComponent<PlayerController>();
         gameOverPanel.SetActive(false);
     }
     public void IsGameOver()
     {
-     
-        isGameOver = true;
-        Time.timeScale = 0f; // Detener el tiempo
+        Time.timeScale = 0f; // stop time
         gameOverPanel.SetActive(true);
         audioLibrary.PlaySound("gameOverSound");
     }
