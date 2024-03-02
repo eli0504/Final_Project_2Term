@@ -15,6 +15,7 @@ public class enemyController : MonoBehaviour
     public float speed = 2;
     public float chaseRadius = 5f;
     public float attackRadius = 2f;
+    public float attackCooldown = 1.0f;  // Waiting time between attacks
 
     //clamp
     public float minY; 
