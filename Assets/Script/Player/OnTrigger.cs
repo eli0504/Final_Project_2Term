@@ -25,9 +25,12 @@ public class OnTrigger : MonoBehaviour
     private Vignette vignette;
 
     public ParticleSystem boxParticles;
+<<<<<<< HEAD
     public ParticleSystem boxParticles2;
     public ParticleSystem winParticles;
     public ParticleSystem winParticles2;
+=======
+>>>>>>> parent of b3e945d (testing buttons)
 
     public float speed = 25f;
     public float stairsSpeed = 5f;
@@ -77,10 +80,15 @@ public class OnTrigger : MonoBehaviour
             Destroy(other.gameObject); 
             keysCounter++;
             keysCounterText.text = $"{keysCounter}";
+<<<<<<< HEAD
             //Time.timeScale = 0f;
             winParticles.Play();
             winParticles2.Play();
             StartCoroutine(waitForWinPanel());
+=======
+            Time.timeScale = 0f;
+            winPanel.SetActive(true);
+>>>>>>> parent of b3e945d (testing buttons)
         }
 
         //PowerUp
@@ -161,13 +169,6 @@ public class OnTrigger : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         vignette.active = false;
-    }
-
-    IEnumerator waitForWinPanel()
-    {
-        yield return new WaitForSeconds(2);
-
-        winPanel.SetActive(true);
     }
 }
        
