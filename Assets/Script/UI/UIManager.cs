@@ -12,7 +12,6 @@ public class UIManager : MonoBehaviour
 
     //panels
     [SerializeField] private GameObject pausePanel;
-    //[SerializeField] private GameObject winPanel;
     [SerializeField] private GameObject settingsPanel;
     [SerializeField] private GameObject creditsPanel;
     //buttons
@@ -113,7 +112,6 @@ public class UIManager : MonoBehaviour
     public void GotoMainMenuScene()
     {
         SceneManager.LoadScene("MainMenu");
-
     }
     public void GotoPlayerPrefScene()
     {

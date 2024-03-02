@@ -25,6 +25,7 @@ public class OnTrigger : MonoBehaviour
     private Vignette vignette;
 
     public ParticleSystem boxParticles;
+    public ParticleSystem winParticles;
 
     public float speed = 25f;
     public float stairsSpeed = 5f;
@@ -47,6 +48,8 @@ public class OnTrigger : MonoBehaviour
         healthScript = GetComponent<Health>();
 
         winPanel.SetActive(false);
+
+        winParticles.Stop();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -75,7 +78,8 @@ public class OnTrigger : MonoBehaviour
             keysCounter++;
             keysCounterText.text = $"{keysCounter}";
             Time.timeScale = 0f;
-            winPanel.SetActive(true);
+            winParticles.Play();
+            StartCoroutine(waitForWinPanel());
         }
 
         //PowerUp
@@ -152,6 +156,13 @@ public class OnTrigger : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
         vignette.active = false;
+    }
+
+    IEnumerator waitForWinPanel()
+    {
+        yield return new WaitForSeconds(2);
+
+        winPanel.SetActive(true);
     }
 }
        

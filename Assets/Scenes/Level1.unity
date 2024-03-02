@@ -8564,9 +8564,13 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1641079856}
     - target: {fileID: 7680867721756068890, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
+      propertyPath: goldKey
+      value: 
+      objectReference: {fileID: 1069163220722581101, guid: 8ab572a3eb23f5e42bfc1986cfd81284, type: 3}
+    - target: {fileID: 7680867721756068890, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
       propertyPath: winPanel
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 6542305544527650571, guid: e592e93e7f3c32c49a50f5f163586871, type: 3}
     - target: {fileID: 7680867721756068890, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
       propertyPath: boxParticles
       value: 
