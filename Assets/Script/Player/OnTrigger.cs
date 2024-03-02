@@ -25,7 +25,9 @@ public class OnTrigger : MonoBehaviour
     private Vignette vignette;
 
     public ParticleSystem boxParticles;
+    public ParticleSystem boxParticles2;
     public ParticleSystem winParticles;
+    public ParticleSystem winParticles2;
 
     public float speed = 25f;
     public float stairsSpeed = 5f;
@@ -48,8 +50,6 @@ public class OnTrigger : MonoBehaviour
         healthScript = GetComponent<Health>();
 
         winPanel.SetActive(false);
-
-        winParticles.Stop();
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -77,19 +77,22 @@ public class OnTrigger : MonoBehaviour
             Destroy(other.gameObject); 
             keysCounter++;
             keysCounterText.text = $"{keysCounter}";
-            Time.timeScale = 0f;
+            //Time.timeScale = 0f;
             winParticles.Play();
+            winParticles2.Play();
             StartCoroutine(waitForWinPanel());
         }
 
         //PowerUp
         if (other.gameObject.tag == "smallPowerUp")
         {
+            Destroy(other.gameObject);
             audioLibrary.PlaySound("poison");
             transform.localScale = new Vector3(smallPowerUp, smallPowerUp, 0);
         }
         else if (other.gameObject.tag == "bigPowerUp")
         {
+            Destroy(other.gameObject);
             audioLibrary.PlaySound("poison");
             transform.localScale = new Vector3(bigPowerUp, bigPowerUp, 0);
         }
@@ -109,13 +112,15 @@ public class OnTrigger : MonoBehaviour
         //box
         if (other.CompareTag("box"))
         {
+            Destroy(other.gameObject);
             Instantiate(smallPotion, new Vector3(-6, -2, 0), Quaternion.identity);
             boxParticles.Stop();
         }
         else if (other.CompareTag("box2"))
         {
+            Destroy(other.gameObject);
             Instantiate(bigPotion, new Vector3(44.85f, -1.55f, 0), Quaternion.identity);
-            boxParticles.Stop();
+            boxParticles2.Stop();
         }
 
         //live

@@ -1183,7 +1183,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -6231,7 +6231,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 1
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -16730,12 +16730,12 @@ MonoBehaviour:
   pointA: {fileID: 230339085}
   pointB: {fileID: 485109676}
   player: {fileID: 1483239473}
-  speed: 1
+  speed: 2
   chaseRadius: 5
   attackRadius: 2
-  attackCooldown: 2
-  minY: -1.6
-  maxY: -1.6
+  attackCooldown: 1
+  minY: 0
+  maxY: 0
 --- !u!1001 &305442179
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36372,12 +36372,12 @@ MonoBehaviour:
   pointA: {fileID: 314290797}
   pointB: {fileID: 2107500842}
   player: {fileID: 1483239473}
-  speed: 1
+  speed: 2
   chaseRadius: 5
   attackRadius: 2
-  attackCooldown: 2
-  minY: 4.61
-  maxY: 4.61
+  attackCooldown: 1
+  minY: 0
+  maxY: 0
 --- !u!1001 &913719526
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54431,6 +54431,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 136399316}
     - target: {fileID: 7680867721756068890, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
+      propertyPath: winParticles
+      value: 
+      objectReference: {fileID: 118752466}
+    - target: {fileID: 7680867721756068890, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
+      propertyPath: boxParticles2
+      value: 
+      objectReference: {fileID: 759690710}
+    - target: {fileID: 7680867721756068890, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
+      propertyPath: winParticles2
+      value: 
+      objectReference: {fileID: 134361606}
+    - target: {fileID: 7680867721756068890, guid: 84058c4345d622d42975ef6ac3a27823, type: 3}
       propertyPath: keysCounterText
       value: 
       objectReference: {fileID: 1993725578}
@@ -56889,12 +56901,12 @@ MonoBehaviour:
   pointA: {fileID: 1689890181}
   pointB: {fileID: 1530198368}
   player: {fileID: 1483239473}
-  speed: 1
+  speed: 2
   chaseRadius: 5
-  attackRadius: 3
-  attackCooldown: 2
-  minY: 3.54
-  maxY: 3.55
+  attackRadius: 2
+  attackCooldown: 1
+  minY: 0
+  maxY: 0
 --- !u!114 &9021172319703642769
 MonoBehaviour:
   m_ObjectHideFlags: 0
