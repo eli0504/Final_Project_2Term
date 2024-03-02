@@ -21,6 +21,14 @@ public class SaveSystem : MonoBehaviour
         OnDataLoadedResult?.Invoke(result); //called if the result of the LoadedData is true or false 
     }
 
+    public void ResetData() //delete all info for start a new Game
+    {
+        PlayerPrefs.DeleteKey(playerHealthKey);
+        PlayerPrefs.DeleteKey(sceneKey);
+        PlayerPrefs.DeleteKey(savePresentKey);
+        loadedData = null;
+    }
+
     //load stored game data
     public bool LoadData()
     {
@@ -32,14 +40,6 @@ public class SaveSystem : MonoBehaviour
             return true; //The data was loaded successfully
         }
         return false; //If it is not 1 there is no data to load.
-    }
-
-    public void ResetData() //delete all info for start a new Game
-    {
-        PlayerPrefs.DeleteKey(playerHealthKey);
-        PlayerPrefs.DeleteKey(sceneKey);
-        PlayerPrefs.DeleteKey(savePresentKey);
-        loadedData = null;
     }
 
     public void SaveData(int sceneIndex, int playerHealth)
