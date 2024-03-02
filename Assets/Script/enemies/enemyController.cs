@@ -5,11 +5,6 @@ using UnityEngine.UI;
 
 public class enemyController : MonoBehaviour
 {
-    
-    private GameOver gameOver;
-    private Health healthScript;
-
-    private Rigidbody2D rb;
     private Animator anim;
 
     public Transform pointA;
@@ -17,31 +12,21 @@ public class enemyController : MonoBehaviour
     private Transform currentPoint;
     public Transform player;
 
-    public float speed = 5;
-    private float distance;
-
+    public float speed = 2;
     public float chaseRadius = 5f;
     public float attackRadius = 2f;
-    
-    private float lastAttackTime;
     public float attackCooldown = 1.0f;  // Waiting time between attacks
 
     //clamp
     public float minY; 
     public float maxY; 
 
-
     private void Awake()
     {
-        rb = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
-
     }
     private void Start()
     {
-        healthScript = GetComponent<Health>();
-        gameOver = GetComponent<GameOver>();
-
         currentPoint = pointB; //initial start point
 
         anim.SetBool("run", true);

@@ -14,10 +14,12 @@ public class OnTrigger : MonoBehaviour
     public TextMeshProUGUI coinsCounterText;
     public TextMeshProUGUI keysCounterText;
 
+    public GameObject winPanel;
     public GameObject player;
     public GameObject bigPotion;
     public GameObject smallPotion;
     public GameObject heart;
+    public GameObject goldKey;
 
     public Volume volume;
     private Vignette vignette;
@@ -43,6 +45,8 @@ public class OnTrigger : MonoBehaviour
         vignette.color.value = Color.red;
         
         healthScript = GetComponent<Health>();
+
+        winPanel.SetActive(false);
     }
 
     private void OnTriggerEnter2D(Collider2D other)
@@ -71,7 +75,7 @@ public class OnTrigger : MonoBehaviour
             keysCounter++;
             keysCounterText.text = $"{keysCounter}";
             Time.timeScale = 0f;
-            // winPanel.SetActive(true);
+            winPanel.SetActive(true);
         }
 
         //PowerUp
@@ -125,8 +129,17 @@ public class OnTrigger : MonoBehaviour
         } else if (other.CompareTag("Edge2"))
         {
             transform.position = new Vector3(152.7f, 5.23f, 1f);
+        } else if (other.CompareTag("Edge3"))
+        {
+            transform.position = new Vector3(-15f, -2.78f, 1f);
+            healthScript.GetDamage();
         }
-        
+
+        //finalLevel
+        if (other.CompareTag("finishLevel"))
+        {
+            Instantiate(goldKey, new Vector3(152.55f, 10f, 0), Quaternion.identity);
+        }
 
     }
 

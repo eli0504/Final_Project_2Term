@@ -7,6 +7,7 @@ public class SaveSystem : MonoBehaviour
 {
     public string playerHealthKey = "PlayerHealth", sceneKey = "SceneIndex", savePresentKey = "SavePresent";
     public LoadedData loadedData { get; private set; }
+
     public UnityEvent<bool> OnDataLoadedResult;
 
     private void Awake()
@@ -18,7 +19,7 @@ public class SaveSystem : MonoBehaviour
     private void Start()
     {
         var result = LoadData();
-        OnDataLoadedResult?.Invoke(result); //called if the result of the LoadedData is true or false 
+        OnDataLoadedResult?.Invoke(result); //called if the result of the LoadedData is true or false (continue button -> if there'sno data, the button )
     }
 
     public void ResetData() //delete all info for start a new Game

@@ -11,22 +11,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/PlayerPref.unity
     guid: d6a3848cf44beb54d9c772bcaa9ff587
-  - enabled: 0
-    path: Assets/Scenes/Settings.unity
-    guid: dcd5b193772b85244b47c63b741ea6b9
   - enabled: 1
     path: Assets/Scenes/Level1.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
     path: Assets/Scenes/Level2.unity
     guid: 4d17b911d4149a946b04c043dd407c25
-  - enabled: 1
-    path: Assets/Scenes/FinalBoss.unity
-    guid: 6c18c7b4c652bc844b8c12febb07fe98
-  - enabled: 0
-    path: Assets/Scenes/Credits.unity
-    guid: c8b51159931467043b265cd5877e4839
-  - enabled: 0
-    path: Assets/Scenes/Loader.unity
-    guid: 25e5ca7ea84f9a24896cffaa6970aa15
   m_configObjects: {}

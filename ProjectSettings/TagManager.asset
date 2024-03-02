@@ -14,7 +14,6 @@ TagManager:
   - box
   - respawn
   - CheckPoint
-  - FinalBoss
   - Edge
   - keys
   - box2
@@ -26,6 +25,7 @@ TagManager:
   - finishLevel
   - Edge2
   - attack
+  - Edge3
   layers:
   - Default
   - TransparentFX
